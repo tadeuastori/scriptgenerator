@@ -1,0 +1,131 @@
+<form [formGroup]="form">
+
+    <div class="card">
+        <div class="card-body">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <button type="button" class="btn btn-success btn-sm" (click)="addTranslatorKey()">
+                            <img alt="Add Key" title="Add Key" src="../../assets/btn/btnAdd.png" />
+                            &nbsp; Add Key
+                        </button>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-check text-right">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1" formControlName="getcommit" (change)="generateScript()">
+                                        <label class="custom-control-label" for="customCheck1">Set Commit?</label>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck2" formControlName="getbeginend" (change)="generateScript()">
+                                        <label class="custom-control-label" for="customCheck2">Set Begin/End?</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <br>
+
+    <div formArrayName="translateKeys">
+        <div class="card" *ngFor="let translate of translateFormGroup.controls; let i = index;"
+            style="margin-bottom: 5px;">
+
+            <div [formGroupName]="i">
+                <div class="card-body">
+                    <div class="row mb-1">
+                        <div class="col-sm-8">
+                            <div class="input-group mb-1">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Key</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Key" aria-describedby="basic-addon1"
+                                    formControlName="key" (change)="generateScript()">
+                            </div>
+                            <small class="text-danger"
+                                *ngIf="getTranslateFormGroup(i).controls['key'].hasError('required')">
+                                Key is required! </small>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <input type="checkbox" aria-label="Checkbox for following text input"
+                                            formControlName="force" (change)="generateScript()">
+                                    </div>
+                                </div>
+                                <label class="form-control" aria-label="label with checkbox" readonly>Force
+                                    Update?</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-1">
+                        <div class="col-sm">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Portuguese</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Portuguese"
+                                    (change)="generateScript()" aria-describedby="basic-addon1"
+                                    formControlName="portuguese">
+                            </div>
+                            <small class="text-danger"
+                                *ngIf="getTranslateFormGroup(i).controls['portuguese'].hasError('required')">
+                                Portuguese translate is required! </small>
+                        </div>
+                        <div class="col-sm">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">English</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="English" (change)="generateScript()"
+                                    aria-describedby="basic-addon1" formControlName="english">
+                            </div>
+                            <small class="text-danger"
+                                *ngIf="getTranslateFormGroup(i).controls['english'].hasError('required')">
+                                English translate is required! </small>
+                        </div>
+                        <div class="col-sm">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Spanish</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Spanish" (change)="generateScript()"
+                                    aria-describedby="basic-addon1" formControlName="spanish">
+                            </div>
+                            <small class="text-danger"
+                                *ngIf="getTranslateFormGroup(i).controls['spanish'].hasError('required')">
+                                Spanish translate is required! </small>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card-footer text-right">
+                    <small class="text-muted">
+
+                        <button type="button" class="btn btn-danger btn-sm" (click)="removeTranslateKey()">
+                            <img alt="Remove Key" title="Remove Key" src="../../assets/btn/btnRemove.png" />
+                            &nbsp; Remove Key
+                        </button>
+
+                    </small>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</form>

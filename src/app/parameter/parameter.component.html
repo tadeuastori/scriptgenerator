@@ -1,0 +1,133 @@
+<form [formGroup]="form">
+
+    <div class="card">
+        <div class="card-body">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <button type="button" class="btn btn-success btn-sm" (click)="addParameter()">
+                            <img alt="Add Parameter" title="Add Parameter" src="../../assets/btn/btnAdd.png" />
+                            &nbsp; Add Parameter
+                        </button>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-check text-right">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1" 
+                                               formControlName="getcommit" (change)="generateScript()">
+                                        <label class="custom-control-label" for="customCheck1">Set Commit?</label>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck2" 
+                                               formControlName="getbeginend" (change)="generateScript()">
+                                        <label class="custom-control-label" for="customCheck2">Set Begin/End?</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <br>
+
+
+    <div formArrayName="parameter">
+        <div class="card" *ngFor="let parameterItem of parameterFormGroup.controls; let i = index;"
+            style="margin-bottom: 5px;">
+
+            <div [formGroupName]="i">
+                <div class="card-body">
+                    <div class="row mb-1">
+                        <div class="col-sm-6">
+                            <div class="input-group mb-1">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Parameter</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Parameter" aria-describedby="basic-addon1"
+                                    formControlName="parameter" (change)="generateScript()">
+                            </div>
+                            <small class="text-danger"
+                                *ngIf="getParameterFormGroup(i).controls['parameter'].hasError('required')">
+                                Parameter is required! </small>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <input type="checkbox" aria-label="Checkbox for following text input"
+                                            formControlName="globalparameter" (change)="generateScript()">
+                                    </div>
+                                </div>
+                                <label class="form-control" aria-label="label with checkbox" readonly>Global Parameter?</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <input type="checkbox" aria-label="Checkbox for following text input"
+                                            formControlName="isreviewed" (change)="generateScript()">
+                                    </div>
+                                </div>
+                                <label class="form-control" aria-label="label with checkbox" readonly>Reviewed Parameter?</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-1">
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Value</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Value"
+                                    (change)="generateScript()" aria-describedby="basic-addon1"
+                                    formControlName="value">
+                            </div>
+                            <small class="text-danger"
+                                *ngIf="getParameterFormGroup(i).controls['value'].hasError('required')">
+                                Parameter Value is required! </small>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Observation</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Observation" (change)="generateScript()"
+                                    aria-describedby="basic-addon1" formControlName="observation">
+                            </div>
+                            <small class="text-danger"
+                                *ngIf="getParameterFormGroup(i).controls['observation'].hasError('required')">
+                                Parameter Observation is required! </small>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card-footer text-right">
+                    <small class="text-muted">
+
+                        <button type="button" class="btn btn-danger btn-sm" (click)="removeParameter()">
+                            <img alt="Remove Parameter" title="Remove Parameter" src="../../assets/btn/btnRemove.png" />
+                            &nbsp; Remove Parameter
+                        </button>
+
+                    </small>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</form>

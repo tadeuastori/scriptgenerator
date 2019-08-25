@@ -1,0 +1,25 @@
+.sectionPages{
+    padding-top: 15px;
+    padding-bottom: 50px;
+    width: 100%;
+    height: 100%;
+}
+
+.sectionPages article{
+    align-items: center;
+    align-self: center;
+    align-content: center;    
+}
+
+nav{
+    /* background-color: rgba(233, 236, 239, 0.767);  */
+    align-self: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    height: 30px;
+}
+
+nav span{
+    width: 200px;
+}

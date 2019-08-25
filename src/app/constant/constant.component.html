@@ -1,0 +1,171 @@
+<form [formGroup]="form">
+
+    <div class="card">
+        <div class="card-body">
+
+            <div class="container">
+                <div class="row">
+
+                    <div class="col">
+                        <button type="button" class="btn btn-success btn-sm" (click)="addConstant()">
+                            <img alt="Add Parameter" title="Add Constant" src="../../assets/btn/btnAdd.png" />
+                            &nbsp; Add Constant
+                        </button>
+                    </div>
+
+                    <div class="col-sm">
+                        <div class="form-check text-right">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1"
+                                            formControlName="getcommit" (change)="generateScript()">
+                                        <label class="custom-control-label" for="customCheck1">Set Commit?</label>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="col" hidden>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck2"
+                                            formControlName="getbeginend" (change)="generateScript()">
+                                        <label class="custom-control-label" for="customCheck2">Set Begin/End?</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <br>
+
+    <div formArrayName="constant">
+        <div class="card" *ngFor="let constantItem of constantFormGroup.controls; let i = index;"
+            style="margin-bottom: 5px;">
+
+            <div [formGroupName]="i">
+                <div class="card-body">
+
+                    <div class="row mb-1">
+                        <div class="col-sm">
+                            <div class="input-group">
+
+                                <div class="input-group-prepend">
+                                 <span class="input-group-text">Sub-Query</span>
+                                </div>
+                                <textarea class="form-control" aria-label="SubQuery" aria-describedby="SubQuery"
+                                    formControlName="subquery" (change)="generateScript()" rows="5"></textarea>
+                            </div>
+                            <small class="text-danger"
+                            *ngIf="getConstantFormGroup(i).controls['subquery'].hasError('required')">
+                            SubQuery is required! &nbsp;&nbsp;&nbsp; <i><u>(Don't set INTO statement)</u></i> </small>
+
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col-sm-8">
+                            <div class="input-group mb-1">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Constant</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Constant"
+                                    aria-describedby="basic-addon1" formControlName="constant"
+                                    (change)="generateScript()">
+                            </div>
+                            <small class="text-danger"
+                                *ngIf="getConstantFormGroup(i).controls['constant'].hasError('required')">
+                                Constant is required! </small>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Value</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Value" (change)="generateScript()"
+                                    aria-describedby="basic-addon1" formControlName="value">
+                            </div>
+                            <small class="text-danger"
+                                *ngIf="getConstantFormGroup(i).controls['value'].hasError('required')">
+                                Value is required! </small>
+
+                        </div>
+                    </div>
+
+                    <div class="row mb-1">
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Table</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Table" (change)="generateScript()"
+                                    aria-describedby="basic-addon1" formControlName="table">
+                            </div>
+                            <small class="text-danger"
+                                *ngIf="getConstantFormGroup(i).controls['table'].hasError('required')">
+                                Table is required! </small>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Column</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Column" (change)="generateScript()"
+                                    aria-describedby="basic-addon1" formControlName="column">
+                            </div>
+                            <small class="text-danger"
+                                *ngIf="getConstantFormGroup(i).controls['column'].hasError('required')">
+                                Column is required! </small>
+                        </div>
+                    </div>
+
+                    <div class="row mb-1">
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Observation</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Observation"
+                                    (change)="generateScript()" aria-describedby="basic-addon1"
+                                    formControlName="observation">
+                            </div>
+                            <small class="text-danger"
+                                *ngIf="getConstantFormGroup(i).controls['observation'].hasError('required')">
+                                Observation is required! </small>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <input type="checkbox" aria-label="Checkbox for following text input"
+                                            formControlName="isreviewed" (change)="generateScript()">
+                                    </div>
+                                </div>
+                                <label class="form-control" aria-label="label with checkbox" readonly>Reviewed
+                                    Constant?</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="card-footer text-right">
+                    <small class="text-muted">
+
+                        <button type="button" class="btn btn-danger btn-sm" (click)="removeConstant()">
+                            <img alt="Remove Constant" title="Remove Constant" src="../../assets/btn/btnRemove.png" />
+                            &nbsp; Remove Constant
+                        </button>
+
+                    </small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</form>

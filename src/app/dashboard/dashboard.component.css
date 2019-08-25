@@ -1,0 +1,29 @@
+.articleDashboard{
+    text-align: center;
+    padding: 30px 0px 50px 0px;
+    width: 100%;
+}
+
+.articleDashboard .card-deck {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: .5rem;
+}
+
+.articleDashboard strong{
+    letter-spacing: 5px; 
+}
+
+.articleDashboard .linkPag{
+    cursor: pointer;
+    border: 3px transparent solid;
+}
+
+.articleDashboard .linkPag .footerCard{
+    float: right;    
+    height: 30px;
+}
+
+.articleDashboard .linkPag:hover{
+    border: 3px black solid;
+}

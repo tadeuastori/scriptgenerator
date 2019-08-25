@@ -1,0 +1,42 @@
+<nav>
+    <div *ngIf="showPageName && showCard;">
+        <span class="badge badge-secondary">
+                &nbsp;&nbsp;&nbsp;&nbsp;{{pageTitle}}&nbsp;&nbsp;&nbsp;&nbsp;
+        </span>
+    </div>
+</nav>
+<div *ngIf="showCard; else elseBlock">
+    <section class="sectionPages">
+        <article class="w-100">
+            <div class="card w-100 bg-info">
+                <div class="card-header">
+                    <button type="button" class="btn btn-light btn-sm" style="float: left;" (click)="goBack()">
+                        <img alt="Return Dashboard" title="Return Dashboard" src="../../assets/btn/btnReturn.png" />
+                        Dashboard
+                    </button>
+                    <button type="button" class="btn btn-light btn-sm" style="float: right;" data-toggle="modal"
+                        data-target="#exampleModalScrollable">
+                        <img alt="Open Script" title="Open Script" src="../../assets/btn/btnSql.png" />
+                        Script
+                    </button>
+                </div>
+                <div class="card-body" style="background-color: white;">
+                    <router-outlet></router-outlet>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted float-right">
+                        <span class="badge badge-danger">&nbsp;&nbsp;{{appVersion}}&nbsp;&nbsp;</span>
+                    </small>
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <section class="sectionPopup">
+        <app-modalscript></app-modalscript>
+    </section>
+</div>
+<ng-template #elseBlock>
+    <!-- PAINEL DO DASHBOARD -->
+    <router-outlet></router-outlet>
+</ng-template>
