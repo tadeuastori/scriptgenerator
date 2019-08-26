@@ -40,7 +40,7 @@ export class ConstantService implements ScriptInterface {
 
           strAux = item.value["subquery"];
           strAux = strAux.replace("\t", "");
-          querySelect += strAux.replace("from", "into V_CODIGO_" + contConst + "\n from");
+          querySelect += strAux.toLowerCase().replace("from", "into V_CODIGO_" + contConst + "\n from");
 
           if (querySelect.substring(querySelect.length - 1, querySelect.length) != ";") { querySelect += ";"; }
 
@@ -77,7 +77,7 @@ export class ConstantService implements ScriptInterface {
     }
 
 
-    query = "Declare\n\n" + declareSession.slice(-1) + " number; " + "\n\n" + query;
+    query = "Declare\n\n" + declareSession.slice(0, -1) + " number; " + "\n\n" + query;
 
     query += querySelect + "\n" + queryProcedure + "\n" + queryUpdate + "\n";
 
