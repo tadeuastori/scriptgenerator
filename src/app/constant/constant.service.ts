@@ -39,14 +39,22 @@ export class ConstantService implements ScriptInterface {
         if (item.value["subquery"] != null) {
 
           strAux = item.value["subquery"];
-          strAux = strAux.replace("\t", "");
-          querySelect += strAux.toLowerCase().replace("from", "into V_CODIGO_" + contConst + "\n from");
 
-          if (querySelect.substring(querySelect.length - 1, querySelect.length) != ";") { querySelect += ";"; }
+          if (strAux.includes("from") || strAux.includes("FROM")) {
+            strAux = strAux.replace("\t", "").replace("FROM", "from"); /*IT CAN'T BE UPPERCASE*/
+            querySelect += strAux.replace("from", "into V_CODIGO_" + contConst + "\nfrom");
 
-          querySelect += "\n\n";
+            if (querySelect.substring(querySelect.length - 1, querySelect.length) != ";") { querySelect += ";"; }
 
-          declareSession += "V_CODIGO_" + contConst + ",";
+            querySelect += "\n\n";
+
+            declareSession += "V_CODIGO_" + contConst + ",";
+          }
+          else 
+          {
+            querySelect = "<< The SELECT script has no FROM. This script will not work! >> \n\n";
+          }
+
         }
 
 
