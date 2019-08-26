@@ -1,6 +1,6 @@
 import { Generator } from '../generator';
 
-const pathImg = "../../assets/img/";
+const pathImg = "./assets/img/";
 var countId = 0;
 
 export const GENERATORS: Generator[] = [
