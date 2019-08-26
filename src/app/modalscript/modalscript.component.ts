@@ -23,6 +23,8 @@ export class ModalscriptComponent implements OnInit {
   copyMessage: string = '';
   getCommit: boolean = true;
   getBeginEnd: boolean = true;
+  isMobileDevice: boolean = this.appcomponent.isMobileDevice;
+
 
   ngOnInit() {
     this.pageTitleModal = this.appcomponent.pageTitle;
