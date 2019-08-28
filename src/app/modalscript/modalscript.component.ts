@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AppComponent } from '../app.component';
 import { ExportService } from '../export.service';
 import { ScriptService } from '../script.service';
-// import { Observable } from 'rxjs';
 import { interval } from 'rxjs';
 
 @Component({
@@ -28,20 +27,6 @@ export class ModalscriptComponent implements OnInit {
 
   ngOnInit() {
     this.pageTitleModal = this.appcomponent.pageTitle;
-  }
-
-  changeGetCommit(): void {
-    // this.getCommit = !this.getCommit;
-    // this.generatedScript = String(this.getCommit);
-  }
-
-  changeGetBeginEnd(): void {
-    
-    // if(!this.getBeginEnd)
-    // { this.generatedScript = this.scriptservice.removeBeginEnd();}
-    // else
-    // { this.generatedScript = this.scriptservice.insertBeginEnd();}
-
   }
 
   openScript(): void {

@@ -1,27 +1,27 @@
-import { FormControl, FormGroup, FormArray, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 export class formConstant {
 
-    form: FormGroup;
+  constructor() { }
 
-  constructor(private fb: FormBuilder) {
-    this.form = this.fb.group({
-      published: true,
-      credentials: this.fb.array([]),
+  createConstantForm(fb: FormBuilder): FormGroup {
+    return fb.group({
+      getcommit: [true],
+      getbeginend: [true],
+      constant: fb.array([this.createConstantKey(fb)])
     });
   }
 
-  addCreds() {
-    const creds = this.form.controls.credentials as FormArray;
-    creds.push(this.fb.group({
-      username: '',
-      password: '',
-    }));
+  createConstantKey(fb: FormBuilder): FormGroup {
+    return fb.group({
+      subquery: [null, Validators.compose([Validators.required])],
+      constant: [null, Validators.compose([Validators.required])],
+      table: [null, Validators.compose([Validators.required])],
+      column: [null, Validators.compose([Validators.required])],
+      value: [null, Validators.compose([Validators.required])],
+      observation: [null, Validators.compose([Validators.required])],
+      isreviewed: [true]
+    });
   }
 
-  removeItem() {
-    const creds = this.form.controls.credentials as FormArray;
-    // this.arrayItems.pop();
-    creds.removeAt(creds.length - 1);
- }
 }

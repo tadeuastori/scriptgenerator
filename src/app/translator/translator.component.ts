@@ -67,8 +67,10 @@ export class TranslatorComponent implements OnInit {
   }
 
   removeTranslateKey(index){
-    this.translateList.removeAt(index);
-    this.generateScript();
+    if (confirm("Are you sure to delete this " + this.generatorList.name + "?")) {
+      this.translateList.removeAt(index);
+      this.generateScript();
+    }
   }  
 
   getTranslateFormGroup(index): FormGroup {

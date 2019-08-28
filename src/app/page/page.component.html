@@ -1,0 +1,170 @@
+<form [formGroup]="form">
+
+    <div class="card">
+        <div class="card-body">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <button type="button" class="btn btn-success btn-sm" (click)="addPage()">
+                            <img alt="Add Parameter" title="Add Parameter" src="./assets/btn/btnAdd.png" />
+                            &nbsp; Add Page
+                        </button>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-check text-right">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1" 
+                                               formControlName="getcommit" (change)="generateScript()">
+                                        <label class="custom-control-label" for="customCheck1">Set Commit?</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <br>
+
+
+    <div formArrayName="page">
+        <div class="card" *ngFor="let pageItem of pageFormGroup.controls; let i = index;"
+            style="margin-bottom: 5px;">
+
+            <div [formGroupName]="i">
+                <div class="card-body">
+                    <div class="row mb-1">
+                        <div class="col-sm-8">
+                            <div class="input-group mb-1">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Name</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Name" aria-describedby="basic-addon1"
+                                    formControlName="name" (change)="generateScript()">
+                            </div>
+                            <small class="text-danger"
+                                *ngIf="getPageFormGroup(i).controls['name'].hasError('required')">
+                                Name is required! </small>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group mb-1">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Abbreviation</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Abbrev" aria-describedby="basic-addon1"
+                                    formControlName="abbrev" (change)="generateScript()">
+                            </div>
+                            <small class="text-danger"
+                                *ngIf="getPageFormGroup(i).controls['abbrev'].hasError('required')">
+                                Abbreviation is required! </small>
+                        </div>                        
+                    </div>
+
+                    <div class="row mb-1">
+                        <div class="col-sm-12">
+                            <div class="input-group mb-1">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">URL</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="URL" aria-describedby="basic-addon1"
+                                    formControlName="url" (change)="generateScript()">
+                            </div>
+                            <small class="text-danger"
+                                *ngIf="getPageFormGroup(i).controls['url'].hasError('required')">
+                                URL is required! </small>
+                        </div>                      
+                    </div>
+
+                    <div class="row mb-1">
+                        <div class="col-sm-3">
+                            <div class="input-group mb-1">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Icon</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Icon" aria-describedby="basic-addon1"
+                                    formControlName="icon" (change)="generateScript()">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="input-group mb-1">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect01">Page Type</label>
+                                  </div>
+                                    <select class="custom-select" formControlName="pagetype" (change)="generateScript()" id="inputGroupSelect01">
+                                        <option value="T">Screen</option>
+                                        <option value="R">Report</option>
+                                        <option value="O">Others</option>
+                                      </select>
+                            </div>
+                            <!-- <small class="text-danger"
+                                *ngIf="getPageFormGroup(i).controls['pagetype'].hasError('required')">
+                                Page Type is required! </small> -->
+                        </div>   
+
+                        <div class="col-sm-3">
+                            <div class="input-group mb-1">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect02">Is Menu?</label>
+                                  </div>
+                                    <select class="custom-select" formControlName="ismenu" (change)="generateScript()" id="inputGroupSelect02">
+                                        <option value="S">Yes</option>
+                                        <option value="N">No</option>
+                                      </select>
+                            </div>
+                            <!-- <small class="text-danger"
+                                *ngIf="getPageFormGroup(i).controls['pagetype'].hasError('required')">
+                                Page Type is required! </small> -->
+                        </div>  
+
+                        <div class="col-sm-3">
+                            <div class="input-group mb-1">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Position</span>
+                                </div>
+                                <input type="number" class="form-control" aria-label="OrderNum" aria-describedby="basic-addon1"
+                                    formControlName="ordernum" (change)="generateScript()">
+                            </div>
+                        </div>                
+                    </div>
+
+                    <div class="row mb-1">
+                        <div class="col-sm-12">
+                            <div class="input-group mb-1">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Namespace</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Namespace" aria-describedby="basic-addon1"
+                                    formControlName="namespace" (change)="generateScript()">
+                            </div>
+                            <small class="text-danger"
+                                *ngIf="getPageFormGroup(i).controls['namespace'].hasError('required')">
+                                Namespace is required! </small>
+                        </div>                      
+                    </div>
+
+                </div>
+                <div class="card-footer text-right">
+                    <small class="text-muted">
+
+                        <button type="button" class="btn btn-danger btn-sm" (click)="removePage(i)">
+                            <img alt="Remove Page" title="Remove Page" src="./assets/btn/btnRemove.png" />
+                            &nbsp; Remove Page
+                        </button>
+
+                    </small>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</form>

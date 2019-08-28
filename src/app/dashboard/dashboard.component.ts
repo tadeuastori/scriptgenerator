@@ -24,13 +24,6 @@ export class DashboardComponent implements OnInit {
     this.appcomponent.cdrMethod();
   }
 
-  getRandomColor(): string {
-    var min = Math.ceil(0);
-    var max = Math.floor(4);
-
-    return 'card bg-'+ this.generatorservice.getCardColorType(Math.floor(Math.random() * (max - min + 1)) + min) +' text-white text-center p-3 linkPag';    
-  }
-
   getGeneratorList(): void {
     this.generatorservice.getGenerators()
     .subscribe(generator => this.generatorList = generator);

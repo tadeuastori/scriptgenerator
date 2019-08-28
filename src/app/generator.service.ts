@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { GENERATORS, CardColorType } from './dashboard/mock-generators';
+import { GENERATORS } from './dashboard/mock-generators';
 import { Generator } from './generator';
 import { Observable, of } from 'rxjs';
 
@@ -29,10 +29,6 @@ export class GeneratorService {
     }
 
     return null;    
-  }
-
-  getCardColorType(idx: number): string{
-    return CardColorType[idx];
   }
 
 }

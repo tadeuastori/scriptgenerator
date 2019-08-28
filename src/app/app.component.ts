@@ -29,9 +29,6 @@ export class AppComponent implements OnInit{
   cdrMethod(): void {
     this.checkDevice();
     this.cdr.detectChanges();
-    // setTimeout(() => {
-    //   this.cdr.detectChanges();
-    //   }, 0);
   }
 
   goBack(): void {

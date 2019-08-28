@@ -9,6 +9,7 @@ import { ParameterComponent } from './parameter/parameter.component';
 import { FormsModule } from '@angular/forms';
 import { ModalscriptComponent } from './modalscript/modalscript.component';
 import { TranslatorComponent } from './translator/translator.component';
+import { PageComponent } from './page/page.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { TranslatorComponent } from './translator/translator.component';
     ConstantComponent,
     ParameterComponent,
     ModalscriptComponent,
-    TranslatorComponent
+    TranslatorComponent,
+    PageComponent
   ],
   imports: [
     BrowserModule,

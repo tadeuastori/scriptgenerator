@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormArray, FormGroup } from '@angular/forms';
+import { FormArray, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ScriptService } from '../script.service';
 import { ScriptInterface } from '../ScriptInterface';
 
@@ -54,4 +54,24 @@ export class TranslatorService implements ScriptInterface {
   cleanScript() {
     this.scriptservice.setScript("");
   }
+
+/*###################################################################################*/
+
+  createTranslate(fb: FormBuilder): FormGroup {
+    return fb.group({
+      portuguese: [null, Validators.compose([Validators.required])],
+      english: [null, Validators.compose([Validators.required])],
+      spanish: [null, Validators.compose([Validators.required])]
+    });
+  }
 }
+
+export enum language {
+  portugueseBR = 'pt-BR',
+  portuguesePT = 'pt-PT',
+  englishUS = 'en-US',
+  englishGB = 'en-GB',
+  spanish = 'es-UY',
+  chinese = 'zh-CN',
+}
+

@@ -21,8 +21,6 @@ export class ParameterComponent implements OnInit {
   ) { }
 
   generatorList = this.generatorservice.getGenerator("/parameter");
-  getCommit: boolean = true;
-  getBeginEnd: boolean = true;
 
   ngOnInit() {
     this.appcomponent.pageTitle = this.generatorList.name;
@@ -59,8 +57,10 @@ export class ParameterComponent implements OnInit {
   }
 
   removeParameter(index) {
-    this.parameterList.removeAt(index);
-    this.generateScript();
+    if (confirm("Are you sure to delete this " + this.generatorList.name + "?")) {
+      this.parameterList.removeAt(index);
+      this.generateScript();
+    }
   }
 
   getParameterFormGroup(index): FormGroup {

@@ -18,7 +18,7 @@ export class ConstantComponent implements OnInit {
     private appcomponent: AppComponent,
     private generatorservice: GeneratorService,
     private constantservice: ConstantService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
   ) { }  
 
   generatorList = this.generatorservice.getGenerator("/constant");
@@ -63,8 +63,10 @@ export class ConstantComponent implements OnInit {
   }
 
   removeConstant(index) {
-    this.constantList.removeAt(index);
-    this.generateScript();
+    if (confirm("Are you sure to delete this " + this.generatorList.name + "?")) {
+      this.constantList.removeAt(index);
+      this.generateScript();
+    }
   }
 
   getConstantFormGroup(index): FormGroup {
