@@ -16,8 +16,8 @@
                             <div class="row">
                                 <div class="col-sm">
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck1" 
-                                               formControlName="getcommit" (change)="generateScript()">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1"
+                                            formControlName="getcommit" (change)="generateScript()">
                                         <label class="custom-control-label" for="customCheck1">Set Commit?</label>
                                     </div>
                                 </div>
@@ -35,8 +35,7 @@
 
 
     <div formArrayName="page">
-        <div class="card" *ngFor="let pageItem of pageFormGroup.controls; let i = index;"
-            style="margin-bottom: 5px;">
+        <div class="card" *ngFor="let pageItem of pageFormGroup.controls; let i = index;" style="margin-bottom: 5px;">
 
             <div [formGroupName]="i">
                 <div class="card-body">
@@ -46,8 +45,8 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">Name</span>
                                 </div>
-                                <input type="text" class="form-control" aria-label="Name" aria-describedby="basic-addon1"
-                                    formControlName="name" (change)="generateScript()">
+                                <input type="text" class="form-control" aria-label="Name"
+                                    aria-describedby="basic-addon1" formControlName="name" (change)="generateScript()">
                             </div>
                             <small class="text-danger"
                                 *ngIf="getPageFormGroup(i).controls['name'].hasError('required')">
@@ -58,13 +57,14 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">Abbreviation</span>
                                 </div>
-                                <input type="text" class="form-control" aria-label="Abbrev" aria-describedby="basic-addon1"
-                                    formControlName="abbrev" (change)="generateScript()">
+                                <input type="text" class="form-control" aria-label="Abbrev"
+                                    aria-describedby="basic-addon1" formControlName="abbrev"
+                                    (change)="generateScript()">
                             </div>
                             <small class="text-danger"
                                 *ngIf="getPageFormGroup(i).controls['abbrev'].hasError('required')">
                                 Abbreviation is required! </small>
-                        </div>                        
+                        </div>
                     </div>
 
                     <div class="row mb-1">
@@ -76,10 +76,9 @@
                                 <input type="text" class="form-control" aria-label="URL" aria-describedby="basic-addon1"
                                     formControlName="url" (change)="generateScript()">
                             </div>
-                            <small class="text-danger"
-                                *ngIf="getPageFormGroup(i).controls['url'].hasError('required')">
+                            <small class="text-danger" *ngIf="getPageFormGroup(i).controls['url'].hasError('required')">
                                 URL is required! </small>
-                        </div>                      
+                        </div>
                     </div>
 
                     <div class="row mb-1">
@@ -88,8 +87,8 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">Icon</span>
                                 </div>
-                                <input type="text" class="form-control" aria-label="Icon" aria-describedby="basic-addon1"
-                                    formControlName="icon" (change)="generateScript()">
+                                <input type="text" class="form-control" aria-label="Icon"
+                                    aria-describedby="basic-addon1" formControlName="icon" (change)="generateScript()">
                             </div>
                         </div>
 
@@ -97,42 +96,45 @@
                             <div class="input-group mb-1">
                                 <div class="input-group-prepend">
                                     <label class="input-group-text" for="inputGroupSelect01">Page Type</label>
-                                  </div>
-                                    <select class="custom-select" formControlName="pagetype" (change)="generateScript()" id="inputGroupSelect01">
-                                        <option value="T">Screen</option>
-                                        <option value="R">Report</option>
-                                        <option value="O">Others</option>
-                                      </select>
+                                </div>
+                                <select class="custom-select" formControlName="pagetype" (change)="generateScript()"
+                                    id="inputGroupSelect01">
+                                    <option value="T">Screen</option>
+                                    <option value="R">Report</option>
+                                    <option value="O">Others</option>
+                                </select>
                             </div>
                             <!-- <small class="text-danger"
                                 *ngIf="getPageFormGroup(i).controls['pagetype'].hasError('required')">
                                 Page Type is required! </small> -->
-                        </div>   
+                        </div>
 
                         <div class="col-sm-3">
                             <div class="input-group mb-1">
                                 <div class="input-group-prepend">
                                     <label class="input-group-text" for="inputGroupSelect02">Is Menu?</label>
-                                  </div>
-                                    <select class="custom-select" formControlName="ismenu" (change)="generateScript()" id="inputGroupSelect02">
-                                        <option value="S">Yes</option>
-                                        <option value="N">No</option>
-                                      </select>
+                                </div>
+                                <select class="custom-select" formControlName="ismenu" (change)="generateScript()"
+                                    id="inputGroupSelect02">
+                                    <option value="S">Yes</option>
+                                    <option value="N">No</option>
+                                </select>
                             </div>
                             <!-- <small class="text-danger"
                                 *ngIf="getPageFormGroup(i).controls['pagetype'].hasError('required')">
                                 Page Type is required! </small> -->
-                        </div>  
+                        </div>
 
                         <div class="col-sm-3">
                             <div class="input-group mb-1">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">Position</span>
                                 </div>
-                                <input type="number" class="form-control" aria-label="OrderNum" aria-describedby="basic-addon1"
-                                    formControlName="ordernum" (change)="generateScript()">
+                                <input type="number" class="form-control" aria-label="OrderNum"
+                                    aria-describedby="basic-addon1" formControlName="ordernum"
+                                    (change)="generateScript()">
                             </div>
-                        </div>                
+                        </div>
                     </div>
 
                     <div class="row mb-1">
@@ -141,13 +143,75 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">Namespace</span>
                                 </div>
-                                <input type="text" class="form-control" aria-label="Namespace" aria-describedby="basic-addon1"
-                                    formControlName="namespace" (change)="generateScript()">
+                                <input type="text" class="form-control" aria-label="Namespace"
+                                    aria-describedby="basic-addon1" formControlName="namespace"
+                                    (change)="generateScript()">
                             </div>
                             <small class="text-danger"
                                 *ngIf="getPageFormGroup(i).controls['namespace'].hasError('required')">
                                 Namespace is required! </small>
-                        </div>                      
+                        </div>
+                    </div>
+
+                    <div class="row mb-1">
+                        <div class="col-sm">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Portuguese</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Portuguese"
+                                    (change)="generateScript()" aria-describedby="basic-addon1"
+                                    formControlName="portuguese">
+                            </div>
+                            <small class="text-danger"
+                                *ngIf="getPageFormGroup(i).controls['portuguese'].hasError('required')">
+                                Portuguese translate is required! </small>
+                        </div>
+                    </div>
+
+                    <div class="row mb-1">
+                        <div class="col-sm">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">English</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="English" (change)="generateScript()"
+                                    aria-describedby="basic-addon1" formControlName="english">
+                            </div>
+                            <small class="text-danger"
+                                *ngIf="getPageFormGroup(i).controls['english'].hasError('required')">
+                                English translate is required! </small>
+                        </div>
+                    </div>
+
+                    <div class="row mb-1">
+                        <div class="col-sm">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Spanish</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Spanish" (change)="generateScript()"
+                                    aria-describedby="basic-addon1" formControlName="spanish">
+                            </div>
+                            <small class="text-danger"
+                                *ngIf="getPageFormGroup(i).controls['spanish'].hasError('required')">
+                                Spanish translate is required! </small>
+                        </div>
+                    </div>
+
+                    <div class="row mb-1">
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <input type="checkbox" aria-label="Checkbox for following text input"
+                                            formControlName="force" (change)="generateScript()">
+                                    </div>
+                                </div>
+                                <label class="form-control" aria-label="label with checkbox" readonly>Force
+                                    Update?</label>
+                            </div>
+                        </div>
                     </div>
 
                 </div>

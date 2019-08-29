@@ -49,7 +49,11 @@ export class PageComponent implements OnInit {
       namespace: [null, Validators.compose([Validators.required])],
       ismenu: ["S"],
       pagetype: ["T"],
-      ordernum: [null]
+      ordernum: [null],
+      portuguese: [null, Validators.compose([Validators.required])],
+      english: [null, Validators.compose([Validators.required])],
+      spanish: [null, Validators.compose([Validators.required])],
+      force: ['N']
     });
   }
 
