@@ -7,11 +7,6 @@
                 <br><br>
                 <img [src]="[gen.img]" [alt]="[gen.name]">
                 <br><br>
-                <small class="text-muted float-right" style="position: absolute; right: 10px; bottom: 5px; ">
-                    <span class="badge badge-warning" *ngIf="showVersion(gen.modifydate)">&nbsp;&nbsp;{{getStatus(gen.version)}}&nbsp;&nbsp;</span>
-                    &nbsp;
-                    <span class="badge badge-danger">&nbsp;&nbsp;{{gen.version}}&nbsp;&nbsp;</span>
-                </small>
             </div>
         </div>
     </div>

@@ -3,6 +3,8 @@ import { AppComponent } from '../app.component';
 import { GeneratorService } from '../generator.service';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ConstantService } from './constant.service';
+import { Renderer2, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 
 
 @Component({
@@ -19,6 +21,8 @@ export class ConstantComponent implements OnInit {
     private generatorservice: GeneratorService,
     private constantservice: ConstantService,
     private fb: FormBuilder,
+    private renderer2: Renderer2,
+    @Inject(DOCUMENT) private _document
   ) { }  
 
   generatorList = this.generatorservice.getGenerator("/constant");
@@ -38,6 +42,21 @@ export class ConstantComponent implements OnInit {
     });
 
     this.constantList = this.form.get('constant') as FormArray;
+
+    const s = this.renderer2.createElement('script');
+    s.type = 'text/javascript';
+    //  s.src = 'https://path/to/your/script';
+    s.text = 'window.onscroll = function () { myFunction() }; \n'
+    s.text += 'var header = document.getElementById("formHeader"); \n'
+    s.text += 'var sticky = header.offsetTop+48; \n'
+    s.text += 'function myFunction() { \n'
+    s.text += '    if (window.pageYOffset > sticky) {\n'
+    s.text += '        header.classList.add("sticky"); \n'
+    s.text += '    } else { \n' 
+    s.text += '        header.classList.remove("sticky"); \n'
+    s.text += '    } \n'
+    s.text += '} \n';
+    this.renderer2.appendChild(this._document.body, s);
 
     this.appcomponent.cdrMethod();
   }
