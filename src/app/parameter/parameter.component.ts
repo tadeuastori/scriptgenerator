@@ -29,7 +29,6 @@ export class ParameterComponent implements OnInit {
 
   ngOnInit() {
     this.appcomponent.pageTitle = this.generatorList.name;
-    this.appcomponent.appVersion = this.generatorList.version;
     this.appcomponent.showCard = true;
     this.parameterservice.cleanScript();
 
@@ -42,18 +41,7 @@ export class ParameterComponent implements OnInit {
     this.parameterList = this.form.get('parameter') as FormArray;
 
     const s = this.renderer2.createElement('script');
-    s.type = 'text/javascript';
-    //  s.src = 'https://path/to/your/script';
-    s.text = 'window.onscroll = function () { myFunction() }; \n'
-    s.text += 'var header = document.getElementById("formHeader"); \n'
-    s.text += 'var sticky = header.offsetTop+48; \n'
-    s.text += 'function myFunction() { \n'
-    s.text += '    if (window.pageYOffset > sticky) {\n'
-    s.text += '        header.classList.add("sticky"); \n'
-    s.text += '    } else { \n' 
-    s.text += '        header.classList.remove("sticky"); \n'
-    s.text += '    } \n'
-    s.text += '} \n';
+    s.src = './assets/script/scripts.js';
     this.renderer2.appendChild(this._document.body, s);
 
     this.appcomponent.cdrMethod();

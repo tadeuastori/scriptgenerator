@@ -10,12 +10,16 @@ export class ExportService {
 
   private generatedScript: string;
 
-  cleanCopyClipBoard(): string {
+  cleanMessage(): string {
     return '';
   }
 
   setMessageCopyClipBoard(): string {
     return 'Script has been copied to Clipboard';
+  }
+
+  setMessageDownload(): string {
+    return 'Script has been download to your computer';
   }
 
   copyGeneratedScript(value: string) {

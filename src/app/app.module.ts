@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { ModalscriptComponent } from './modalscript/modalscript.component';
 import { TranslatorComponent } from './translator/translator.component';
 import { PageComponent } from './page/page.component';
+import { EditcubeComponent } from './editcube/editcube.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { PageComponent } from './page/page.component';
     ParameterComponent,
     ModalscriptComponent,
     TranslatorComponent,
-    PageComponent
+    PageComponent,
+    EditcubeComponent
   ],
   imports: [
     BrowserModule,

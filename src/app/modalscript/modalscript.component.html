@@ -9,8 +9,8 @@
                 </button>
             </div>
             <div class="modal-body" id="divConteudo" style="text-align: center; background-color: #E9ECEF;">
-                <textarea type="text" id="generatedScript" [(ngModel)]="generatedScript" class="scriptarea"
-                    (ngModelChange)="cleanCopyClipBoard()"></textarea>
+                <textarea type="text" id="generatedScript" [(ngModel)]="generatedScript" class="scriptarea" disabled
+                    (ngModelChange)="cleanMessage();"></textarea>
                 <br>
                 &nbsp;&nbsp;<span class="badge badge-success">{{copyMessage}}</span>&nbsp;&nbsp;
             </div>
@@ -22,11 +22,11 @@
 
                         </div>
                         <div class="col text-right popupControlBox">
-                            <button type="button" class="btn btn-warning" (click)="copyGeneratedScript()">
+                            <button type="button" class="btn btn-warning" (click)="copyGeneratedScript()" [disabled]="enableBtn">
                                 <img alt="Copy Script" title="Copy Script" src="./assets/btn/btnCopy.png" />
                                 Copy
                             </button>
-                            <button type="button" class="btn btn-success" (click)="dynamicDownloadTxt()"
+                            <button type="button" class="btn btn-success" (click)="dynamicDownloadTxt()"  [disabled]="enableBtn"
                                 *ngIf="!isMobileDevice">
                                 <img alt="Download Script" title="Download Script"
                                     src="./assets/btn/btnDownload.png" />

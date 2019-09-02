@@ -20,7 +20,6 @@ export class AppComponent implements OnInit{
   title = 'Script Generator';
   pageBtn = "botões git/download";
   pageTitle = 'Dashboard';
-  appVersion = '';
 
   ngOnInit() {
     this.checkDevice();

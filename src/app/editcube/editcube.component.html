@@ -1,0 +1,165 @@
+<form [formGroup]="form">
+
+    <div class="card" id="formHeader">
+        <div class="card-body">
+
+            <div class="container">
+                <div class="row">
+
+                    <div class="col">
+                        <button type="button" class="btn btn-success btn-sm" (click)="addColumn()">
+                            <img alt="Add Column" title="Add Column" src="./assets/btn/btnAdd.png" />
+                            &nbsp; Add Column
+                        </button>
+                    </div>
+
+                    <div class="col-sm">
+                        <div class="form-check text-right">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1"
+                                            formControlName="getcommit" (change)="generateScript()">
+                                        <label class="custom-control-label" for="customCheck1">Set Commit?</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+    <br>
+
+    <div class="row mb-0">
+        <div class="col-sm">
+            <div class="input-group mb-1">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">View Name</span>
+                </div>
+                <input type="text" class="form-control" aria-label="ViewName" aria-describedby="basic-addon1"
+                    formControlName="viewname" (change)="generateScript()">
+            </div>
+            <small class="text-danger" *ngIf="form.controls['viewname'].hasError('required')">
+                View Name is required! </small>
+        </div>
+    </div>
+
+    <br>
+
+    <div formArrayName="column">
+        <div class="card" *ngFor="let column of columnFormGroup.controls; let i = index;" style="margin-bottom: 5px;">
+
+            <div [formGroupName]="i">
+                <div class="card-body">
+                    <div class="row mb-1">
+                        <div class="col-sm-8">
+                            <div class="input-group mb-1">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Column Name</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="ColumnName"
+                                    aria-describedby="basic-addon1" formControlName="columnname"
+                                    (change)="generateScript()">
+                            </div>
+                            <small class="text-danger"
+                                *ngIf="getColumnFormGroup(i).controls['columnname'].hasError('required')">
+                                Column Name is required! </small>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group mb-1">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect01">Column Format</label>
+                                </div>
+                                <select class="custom-select" formControlName="format" (change)="generateScript()"
+                                    id="inputGroupSelect01">
+                                    <option value="TX">Text</option>
+                                    <option value="dd/MM/yyyy">dd/MM/yyyy</option>
+                                    <option value="###">###</option>
+                                    <option value="###,###">###,###</option>
+                                    <option value="###,###,###.##">###,###,###.##</option>
+                                    <option value="dd/MM/yyyy HH:mm:ss">dd/MM/yyyy HH:mm:ss</option>
+                                    <option value="HH:mm:ss">HH:mm:ss</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-1">
+                        <div class="col-sm">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Portuguese</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Portuguese"
+                                    (change)="generateScript()" aria-describedby="basic-addon1"
+                                    formControlName="portuguese">
+                            </div>
+                            <small class="text-danger"
+                                *ngIf="getColumnFormGroup(i).controls['portuguese'].hasError('required')">
+                                Portuguese translate is required! </small>
+                        </div>
+                        <div class="col-sm">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">English</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="English" (change)="generateScript()"
+                                    aria-describedby="basic-addon1" formControlName="english">
+                            </div>
+                            <small class="text-danger"
+                                *ngIf="getColumnFormGroup(i).controls['english'].hasError('required')">
+                                English translate is required! </small>
+                        </div>
+                        <div class="col-sm">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Spanish</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Spanish" (change)="generateScript()"
+                                    aria-describedby="basic-addon1" formControlName="spanish">
+                            </div>
+                            <small class="text-danger"
+                                *ngIf="getColumnFormGroup(i).controls['spanish'].hasError('required')">
+                                Spanish translate is required! </small>
+                        </div>
+                    </div>
+
+                    <div class="row mb-1">
+                        <div class="col-sm">
+                            <div class="input-group mb-1">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Previous column</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="ColumnBefore"
+                                    aria-describedby="basic-addon1" formControlName="columnbefore"
+                                    (change)="generateScript()">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card-footer text-right">
+                    <small class="text-muted">
+
+                        <button type="button" class="btn btn-danger btn-sm" (click)="removeColumn(i)">
+                            <img alt="Remove Column" title="Remove Column" src="./assets/btn/btnRemove.png" />
+                            &nbsp; Remove Column
+                        </button>
+
+                    </small>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</form>

@@ -3,7 +3,12 @@ export class Generator {
   name: string;
   link: string;
   img: string;
-  version: string;
-  modifydate: Date;
+}
+
+export class Technology {
+  id: number;
+  name: string;
+  link?: string;
+  img: string;
 }
 
