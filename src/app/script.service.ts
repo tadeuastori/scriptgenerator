@@ -17,4 +17,8 @@ export class ScriptService {
     this.script = value;
   }
 
+  cleanScript(){
+    this.script = '';
+  }
+
 }

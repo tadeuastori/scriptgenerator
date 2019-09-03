@@ -56,7 +56,7 @@
                             </div>
                             <small class="text-danger"
                                 *ngIf="getTranslateFormGroup(i).controls['key'].hasError('required')">
-                                Key is required! </small>
+                                Key is required! </small>&nbsp;
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
@@ -80,11 +80,11 @@
                                 </div>
                                 <input type="text" class="form-control" aria-label="Portuguese"
                                     (change)="generateScript()" aria-describedby="basic-addon1"
-                                    formControlName="portuguese">
+                                    formControlName="portuguese" placeholder="Key Value in portuguese">
                             </div>
                             <small class="text-danger"
                                 *ngIf="getTranslateFormGroup(i).controls['portuguese'].hasError('required')">
-                                Portuguese translate is required! </small>
+                                Portuguese translate is required! </small>&nbsp;
                         </div>
                         <div class="col-sm">
                             <div class="input-group">
@@ -92,11 +92,11 @@
                                     <span class="input-group-text" id="basic-addon1">English</span>
                                 </div>
                                 <input type="text" class="form-control" aria-label="English" (change)="generateScript()"
-                                    aria-describedby="basic-addon1" formControlName="english">
+                                    aria-describedby="basic-addon1" formControlName="english" placeholder="Key Value in english">
                             </div>
                             <small class="text-danger"
                                 *ngIf="getTranslateFormGroup(i).controls['english'].hasError('required')">
-                                English translate is required! </small>
+                                English translate is required! </small>&nbsp;
                         </div>
                         <div class="col-sm">
                             <div class="input-group">
@@ -104,11 +104,11 @@
                                     <span class="input-group-text" id="basic-addon1">Spanish</span>
                                 </div>
                                 <input type="text" class="form-control" aria-label="Spanish" (change)="generateScript()"
-                                    aria-describedby="basic-addon1" formControlName="spanish">
+                                    aria-describedby="basic-addon1" formControlName="spanish" placeholder="Key Value in spanish">
                             </div>
                             <small class="text-danger"
                                 *ngIf="getTranslateFormGroup(i).controls['spanish'].hasError('required')">
-                                Spanish translate is required! </small>
+                                Spanish translate is required! </small>&nbsp;
                         </div>
                     </div>
 

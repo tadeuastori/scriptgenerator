@@ -43,6 +43,10 @@ export class ParameterService implements ScriptInterface {
 
         isCreated = "S";
       }
+      else
+      {
+        isCreated = "N";
+      }
 
     }
 
@@ -52,11 +56,13 @@ export class ParameterService implements ScriptInterface {
 
     if (form.value["getbeginend"]) { query += "End;"; }
 
-    if (isCreated == "S") { this.scriptservice.setScript(query); }
+    if (isCreated == "S") 
+      { this.scriptservice.setScript(query); }
+    else
+      { this.cleanScript(); }
   }
 
   cleanScript() {
-    this.scriptservice.setScript("");
+    this.scriptservice.cleanScript();
   }
-
 }

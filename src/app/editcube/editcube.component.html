@@ -38,21 +38,31 @@
 
     <br>
 
-    <div class="row mb-0">
-        <div class="col-sm">
-            <div class="input-group mb-1">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">View Name</span>
+    <div class="card alert-primary">
+        <div class="card-body">
+            <div class="row mb-0">
+                <div class="col-sm">
+                    <div class="input-group mb-1">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">View Name</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="ViewName" aria-describedby="basic-addon1"
+                            formControlName="viewname" (change)="generateScript()">
+                    </div>
+                    <small class="text-danger" *ngIf="form.controls['viewname'].hasError('required')">
+                        View Name is required! </small> &nbsp;
                 </div>
-                <input type="text" class="form-control" aria-label="ViewName" aria-describedby="basic-addon1"
-                    formControlName="viewname" (change)="generateScript()">
             </div>
-            <small class="text-danger" *ngIf="form.controls['viewname'].hasError('required')">
-                View Name is required! </small>
         </div>
     </div>
 
     <br>
+
+    <div class="card bg-light">
+        <h5 class="card-header">
+            Columns
+        </h5>
+    </div>
 
     <div formArrayName="column">
         <div class="card" *ngFor="let column of columnFormGroup.controls; let i = index;" style="margin-bottom: 5px;">
@@ -67,11 +77,11 @@
                                 </div>
                                 <input type="text" class="form-control" aria-label="ColumnName"
                                     aria-describedby="basic-addon1" formControlName="columnname"
-                                    (change)="generateScript()">
+                                    (change)="generateScript()" placeholder="Table-column Name">
                             </div>
                             <small class="text-danger"
                                 *ngIf="getColumnFormGroup(i).controls['columnname'].hasError('required')">
-                                Column Name is required! </small>
+                                Column Name is required! </small> &nbsp;
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group mb-1">
@@ -100,11 +110,11 @@
                                 </div>
                                 <input type="text" class="form-control" aria-label="Portuguese"
                                     (change)="generateScript()" aria-describedby="basic-addon1"
-                                    formControlName="portuguese">
+                                    formControlName="portuguese" placeholder="Column Name in portuguese">
                             </div>
                             <small class="text-danger"
                                 *ngIf="getColumnFormGroup(i).controls['portuguese'].hasError('required')">
-                                Portuguese translate is required! </small>
+                                Portuguese translate is required! </small>&nbsp;
                         </div>
                         <div class="col-sm">
                             <div class="input-group">
@@ -112,11 +122,12 @@
                                     <span class="input-group-text" id="basic-addon1">English</span>
                                 </div>
                                 <input type="text" class="form-control" aria-label="English" (change)="generateScript()"
-                                    aria-describedby="basic-addon1" formControlName="english">
+                                    aria-describedby="basic-addon1" formControlName="english"
+                                    placeholder="Column Name in english">
                             </div>
                             <small class="text-danger"
                                 *ngIf="getColumnFormGroup(i).controls['english'].hasError('required')">
-                                English translate is required! </small>
+                                English translate is required! </small>&nbsp;
                         </div>
                         <div class="col-sm">
                             <div class="input-group">
@@ -124,11 +135,12 @@
                                     <span class="input-group-text" id="basic-addon1">Spanish</span>
                                 </div>
                                 <input type="text" class="form-control" aria-label="Spanish" (change)="generateScript()"
-                                    aria-describedby="basic-addon1" formControlName="spanish">
+                                    aria-describedby="basic-addon1" formControlName="spanish"
+                                    placeholder="Column Name in spanish">
                             </div>
                             <small class="text-danger"
                                 *ngIf="getColumnFormGroup(i).controls['spanish'].hasError('required')">
-                                Spanish translate is required! </small>
+                                Spanish translate is required! </small>&nbsp;
                         </div>
                     </div>
 
@@ -140,7 +152,7 @@
                                 </div>
                                 <input type="text" class="form-control" aria-label="ColumnBefore"
                                     aria-describedby="basic-addon1" formControlName="columnbefore"
-                                    (change)="generateScript()">
+                                    (change)="generateScript()" placeholder="Previous Table-column Name">
                             </div>
                         </div>
                     </div>
@@ -160,6 +172,5 @@
 
         </div>
     </div>
-
 
 </form>

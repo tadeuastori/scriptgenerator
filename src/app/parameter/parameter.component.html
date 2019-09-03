@@ -62,7 +62,7 @@
                             </div>
                             <small class="text-danger"
                                 *ngIf="getParameterFormGroup(i).controls['parameter'].hasError('required')">
-                                Parameter is required! </small>
+                                Parameter is required! </small> &nbsp;
                         </div>
                         <div class="col-sm-3">
                             <div class="input-group">
@@ -101,20 +101,20 @@
                             </div>
                             <small class="text-danger"
                                 *ngIf="getParameterFormGroup(i).controls['value'].hasError('required')">
-                                Parameter Value is required! </small>
+                                Parameter Value is required! </small>&nbsp;
                         </div>
                         <div class="col-sm-8">
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">Observation</span>
+                                    <span class="input-group-text" id="basic-addon1">Note</span>
                                 </div>
-                                <input type="text" class="form-control" aria-label="Observation"
+                                <input type="text" class="form-control" aria-label="Note"
                                     (change)="generateScript()" aria-describedby="basic-addon1"
                                     formControlName="observation">
                             </div>
                             <small class="text-danger"
                                 *ngIf="getParameterFormGroup(i).controls['observation'].hasError('required')">
-                                Parameter Observation is required! </small>
+                                Parameter Note is required! </small>&nbsp;
                         </div>
                     </div>
 

@@ -83,6 +83,10 @@ export class PageService implements ScriptInterface {
 
         isCreated = "S";
       }
+      else
+      {
+        isCreated = "N";
+      }
 
     }
 
@@ -92,11 +96,13 @@ export class PageService implements ScriptInterface {
 
     query += "End;";
 
-    if (isCreated == "S") { this.scriptservice.setScript(query); }
+    if (isCreated == "S") 
+      { this.scriptservice.setScript(query); }
+    else
+      { this.cleanScript(); }
   }
 
   cleanScript() {
-    this.scriptservice.setScript("");
+    this.scriptservice.cleanScript();
   }
-
 }

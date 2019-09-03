@@ -59,19 +59,19 @@
                                  <span class="input-group-text">Sub-Query</span>
                                 </div>
                                 <textarea class="form-control" aria-label="SubQuery" aria-describedby="SubQuery"
-                                    formControlName="subquery" (change)="generateScript()" rows="5"></textarea>
+                                    formControlName="subquery" (change)="generateScript()" rows="5" placeholder="Subquery to get the constant value from the some table."></textarea>
                             </div>
                             <small class="text-danger"
-                            *ngIf="getConstantFormGroup(i).controls['subquery'].hasError('required')">
-                            SubQuery is required! &nbsp;&nbsp;&nbsp; <i><u>(Don't set INTO statement)</u></i> </small>
-
+                            *ngIf="!getConstantFormGroup(i).controls['value'].value && getConstantFormGroup(i).controls['subquery'].hasError('required')">
+                            SubQuery is required!</small>&nbsp;                            
+                            <small class="text-danger float-right"><i><u>(Don't set INTO statement)</u></i> </small>
                         </div>
                     </div>
                     <div class="row mb-1">
                         <div class="col-sm-8">
                             <div class="input-group mb-1">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">Constant</span>
+                                    <span class="input-group-text" id="basic-addon1">Constant Name</span>
                                 </div>
                                 <input type="text" class="form-control" aria-label="Constant"
                                     aria-describedby="basic-addon1" formControlName="constant"
@@ -79,7 +79,7 @@
                             </div>
                             <small class="text-danger"
                                 *ngIf="getConstantFormGroup(i).controls['constant'].hasError('required')">
-                                Constant is required! </small>
+                                Constant Name is required! </small>&nbsp;
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
@@ -87,11 +87,11 @@
                                     <span class="input-group-text" id="basic-addon1">Value</span>
                                 </div>
                                 <input type="text" class="form-control" aria-label="Value" (change)="generateScript()"
-                                    aria-describedby="basic-addon1" formControlName="value">
+                                    aria-describedby="basic-addon1" formControlName="value" placeholder="Constant Value">
                             </div>
                             <small class="text-danger"
-                                *ngIf="getConstantFormGroup(i).controls['value'].hasError('required')">
-                                Value is required! </small>
+                                *ngIf="!getConstantFormGroup(i).controls['subquery'].value && getConstantFormGroup(i).controls['value'].hasError('required')">
+                                Value is required! </small>&nbsp;
 
                         </div>
                     </div>
@@ -103,11 +103,11 @@
                                     <span class="input-group-text" id="basic-addon1">Table</span>
                                 </div>
                                 <input type="text" class="form-control" aria-label="Table" (change)="generateScript()"
-                                    aria-describedby="basic-addon1" formControlName="table">
+                                    aria-describedby="basic-addon1" formControlName="table" placeholder="Table Name of the value">
                             </div>
                             <small class="text-danger"
                                 *ngIf="getConstantFormGroup(i).controls['table'].hasError('required')">
-                                Table is required! </small>
+                                Table is required! </small>&nbsp;
                         </div>
                         <div class="col-sm-6">
                             <div class="input-group">
@@ -115,11 +115,11 @@
                                     <span class="input-group-text" id="basic-addon1">Column</span>
                                 </div>
                                 <input type="text" class="form-control" aria-label="Column" (change)="generateScript()"
-                                    aria-describedby="basic-addon1" formControlName="column">
+                                    aria-describedby="basic-addon1" formControlName="column" placeholder="Column Name of the value">
                             </div>
                             <small class="text-danger"
                                 *ngIf="getConstantFormGroup(i).controls['column'].hasError('required')">
-                                Column is required! </small>
+                                Column is required! </small>&nbsp;
                         </div>
                     </div>
 
@@ -127,15 +127,15 @@
                         <div class="col-sm-8">
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">Observation</span>
+                                    <span class="input-group-text" id="basic-addon1">Note</span>
                                 </div>
-                                <input type="text" class="form-control" aria-label="Observation"
+                                <input type="text" class="form-control" aria-label="Note"
                                     (change)="generateScript()" aria-describedby="basic-addon1"
-                                    formControlName="observation">
+                                    formControlName="observation" >
                             </div>
                             <small class="text-danger"
                                 *ngIf="getConstantFormGroup(i).controls['observation'].hasError('required')">
-                                Observation is required! </small>
+                                Note is required! </small>&nbsp;
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">

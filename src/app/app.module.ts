@@ -11,6 +11,7 @@ import { ModalscriptComponent } from './modalscript/modalscript.component';
 import { TranslatorComponent } from './translator/translator.component';
 import { PageComponent } from './page/page.component';
 import { EditcubeComponent } from './editcube/editcube.component';
+import { NewcubeComponent } from './newcube/newcube.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { EditcubeComponent } from './editcube/editcube.component';
     ModalscriptComponent,
     TranslatorComponent,
     PageComponent,
-    EditcubeComponent
+    EditcubeComponent,
+    NewcubeComponent
   ],
   imports: [
     BrowserModule,

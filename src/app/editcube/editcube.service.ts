@@ -61,13 +61,17 @@ export class EditcubeService implements ScriptInterface {
 
         isCreated = "S";
       }
+      else
+      {
+        isCreated = "N";
+      }
 
     }
 
     queryDeclare += "/*Nome(s) do(s) campo(s) novo(s)*/\n";
     queryDeclare += "\t var_NovaColuna t_Coluna := t_Coluna("+listColumnName.slice(0, -1)+");\n";
     queryDeclare += "/*Nome(s) da(s) colunas(s) onde a(s) nova(s) coluna(s) será(ão) adiciona(s) posteriormente*/\n";
-    queryDeclare += "/*Deixar em branco caso queira adicoinar ao vim do cubo*/\n";
+    queryDeclare += "/*Deixar em branco caso queira adicionar ao fim do cubo*/\n";
     queryDeclare += "\t var_ColunaAnterior t_Anterior := t_Anterior("+listColumnPrevious.slice(0, -1)+");\n";
     queryDeclare += "/*Formato(s) do(s) campo(s) novo(s)*/\n";
     queryDeclare += "\t var_NovoFormato t_Formato := t_Formato("+listColumnFormat.slice(0, -1)+")\n";
@@ -77,11 +81,9 @@ export class EditcubeService implements ScriptInterface {
     queryDeclare += "\t var_NovaTraducaoEn t_Traducao := t_Traducao("+listColumnEngl.slice(0, -1)+")\n";
     queryDeclare += "\t var_NovaTraducaoZh t_Traducao := t_Traducao("+listColumnEngl.slice(0, -1)+")\n";
     queryDeclare += "/*### SE PRECISAR ADICIONAR OUTRO IDIOMA QUE NÃO ESTEJA AQUI, DEVE SER CRIADO UM NOVO CURSOR E ADICIONAR ELE NO LOOP NO FINAL DO SCRIPT ###*/ \n";
-    
-
+    queryDeclare += "\n";
     queryDeclare += "/*Variável para controle da visão*/\n";
     queryDeclare += "\t v_ExisteVisao number := 0;\n";
-
     queryDeclare += "\n\n";
 
     queryProcedure += "BEGIN";
@@ -218,9 +220,13 @@ export class EditcubeService implements ScriptInterface {
 
     query += "End;";
 
-    if (isCreated == "S") { this.scriptservice.setScript(query); }
+    if (isCreated == "S") 
+      { this.scriptservice.setScript(query); }
+    else
+      { this.cleanScript(); }
   }
+
   cleanScript() {
-    this.scriptservice.setScript("");
+    this.scriptservice.cleanScript();
   }
 }
