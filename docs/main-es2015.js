@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav>\r\n    <div *ngIf=\"showPageName && showCard;\">\r\n        <span class=\"badge badge-secondary\">\r\n                &nbsp;&nbsp;&nbsp;&nbsp;{{pageTitle}}&nbsp;&nbsp;&nbsp;&nbsp;\r\n        </span>\r\n    </div>\r\n</nav>\r\n<div *ngIf=\"showCard; else elseBlock\">\r\n    <section class=\"sectionPages\">\r\n        <article class=\"w-100\">\r\n            <div class=\"card w-100 bg-info\">\r\n                <div class=\"card-header\">\r\n                    <button type=\"button\" class=\"btn btn-light btn-sm\" style=\"float: left;\" (click)=\"goBack()\">\r\n                        <img alt=\"Return Dashboard\" title=\"Return Dashboard\" src=\"./assets/btn/btnReturn.png\" />\r\n                        Dashboard\r\n                    </button>                   \r\n\r\n                    <button type=\"button\" class=\"btn btn-light btn-sm\" style=\"float: right;\" data-toggle=\"modal\"\r\n                        data-target=\"#exampleModalScrollable\">\r\n                        <img alt=\"Open Script\" title=\"Open Script\" src=\"./assets/btn/btnSql.png\" />\r\n                        Generate Script\r\n                    </button>\r\n                </div>\r\n                <div class=\"card-body\" style=\"background-color: white;\">\r\n                    <router-outlet></router-outlet>\r\n                </div>\r\n                <div class=\"card-footer\">\r\n                </div>\r\n            </div>\r\n        </article>\r\n    </section>\r\n\r\n    <section class=\"sectionPopup\">\r\n        <app-modalscript></app-modalscript>\r\n    </section>\r\n</div>\r\n<ng-template #elseBlock>\r\n    <!-- PAINEL DO DASHBOARD -->\r\n    <router-outlet></router-outlet>\r\n</ng-template>"
+module.exports = "<nav>\r\n        &nbsp;\r\n</nav>\r\n<div *ngIf=\"showCard; else elseBlock\">\r\n\r\n        <!-- <h3>\r\n            <div class=\"badge badge-secondary float-left\">\r\n                    &nbsp;&nbsp;&nbsp;&nbsp;<img [src]=\"[pageImg]\" style=\"width: 5px; height: 5px; margin: 0px 5px;\">{{pageTitle}}'s Page&nbsp;&nbsp;&nbsp;&nbsp;\r\n            </div>                \r\n        </h3>    -->\r\n\r\n    <section class=\"sectionPages\">\r\n        <article class=\"w-100\">\r\n            <div class=\"card w-100 bg-info\">\r\n                <div class=\"card-header\">\r\n                    <button type=\"button\" class=\"btn btn-light btn-sm\" style=\"float: left;\" (click)=\"goBack()\">\r\n                        <img alt=\"Return Dashboard\" title=\"Return Dashboard\" src=\"./assets/btn/btnReturn.png\" />\r\n                        Dashboard\r\n                    </button>     \r\n                                                         \r\n                    \r\n                    <button type=\"button\" class=\"btn btn-light btn-sm\" style=\"float: right;\" data-toggle=\"modal\"\r\n                        data-target=\"#exampleModalScrollable\">\r\n                        <img alt=\"Open Script\" title=\"Open Script\" src=\"./assets/btn/btnSql.png\" />\r\n                        Generate Script\r\n                    </button>\r\n                </div>\r\n                <div class=\"card-body\" style=\"background-color: white;\">\r\n                    <router-outlet></router-outlet>\r\n                </div>\r\n                <div class=\"card-footer\">\r\n                </div>\r\n            </div>\r\n        </article>\r\n    </section>\r\n\r\n    <section class=\"sectionPopup\">\r\n        <app-modalscript></app-modalscript>\r\n    </section>\r\n</div>\r\n<ng-template #elseBlock>\r\n    <!-- PAINEL DO DASHBOARD -->\r\n    <router-outlet></router-outlet>\r\n</ng-template>"
 
 /***/ }),
 
@@ -210,8 +210,8 @@ let AppComponent = class AppComponent {
         this.showPageName = true;
         this.isMobileDevice = false;
         this.title = 'Script Generator';
-        this.pageBtn = "botões git/download";
         this.pageTitle = 'Dashboard';
+        this.pageImg = './assets/img/imgDashboard.png';
     }
     ngOnInit() {
         this.checkDevice();
@@ -650,7 +650,7 @@ const GENERATORS = [
     { id: ++countId, name: 'Parameter', link: '/parameter', img: pathImg + 'imgParameter.png' },
     { id: ++countId, name: 'Constant', link: '/constant', img: pathImg + 'imgConstant.png' },
     { id: ++countId, name: 'Translator Key', link: '/translator', img: pathImg + 'imgTranslator.png' },
-    { id: ++countId, name: 'Page', link: '/page', img: pathImg + 'imgPage.png' },
+    { id: ++countId, name: 'New Page', link: '/page', img: pathImg + 'imgPage.png' },
     { id: ++countId, name: 'Create Cube', link: '/newcube', img: pathImg + 'imgCubeNew.png' },
     { id: ++countId, name: 'Edit Cube', link: '/editcube', img: pathImg + 'imgCubeEdit.png' }
 ];

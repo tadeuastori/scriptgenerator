@@ -32,12 +32,12 @@ header .divHeader{
     -moz-border-radius-bottomright: 20px;
     -moz-border-radius-bottomleft: 20px;
     border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;
+    border-bottom-left-radius: 20px;    
+    letter-spacing: 10px;  
 }
 
 .titleHeader{
-    height: 75px;
-    letter-spacing: 10px;    
+    height: 75px;  
 }
 
 .titleHeader .imgTitle{

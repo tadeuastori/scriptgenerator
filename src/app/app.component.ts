@@ -18,8 +18,8 @@ export class AppComponent implements OnInit{
   ) { }
 
   title = 'Script Generator';
-  pageBtn = "botões git/download";
   pageTitle = 'Dashboard';
+  pageImg= './assets/img/imgDashboard.png';
 
   ngOnInit() {
     this.checkDevice();
