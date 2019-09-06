@@ -25,5 +25,6 @@
 }
 
 .articleDashboard .linkPag:hover{
-    border: 3px black solid;
+    border: 3px transparent solid;
+    filter: invert(100%);
 }
