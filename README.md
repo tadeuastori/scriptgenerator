@@ -8,18 +8,19 @@ Check it on [Script Generator WebSite](https://tadeuastori.github.io/scriptgener
 
 | Feature                   |   Test Result
 | :------------------------ |   :-------------------------:
-| Key Translator            |   [![Generic badge](https://img.shields.io/badge/PASSING-GREEN.svg)]()
+| Key Translator            |   [![Generic badge](https://img.shields.io/badge/PASSING-SUCCESS.svg)]()
 | Parameter                 |   [![Generic badge](https://img.shields.io/badge/TESTING-YELLOW.svg)]()
 | Constant                  |   [![Generic badge](https://img.shields.io/badge/TESTING-YELLOW.svg)]()
 | New Page                  |   [![Generic badge](https://img.shields.io/badge/PENDING-BLUE.svg)]()
 | New Cube                  |   [![Generic badge](https://img.shields.io/badge/PENDING-BLUE.svg)]()
 | Edit Existing Cube        |   [![Generic badge](https://img.shields.io/badge/TESTING-YELLOW.svg)]()
 
-
 ## Coming soon...
 
-1. Key translated automatization with Google Translator API
-1. Accepting suggestions... :)
+| Feature                                                       |   Development Status
+| :------------------------------------------------------------ |   -------------------------:
+| Key translated automatization with Google Translator API      |   [![Generic badge](https://img.shields.io/badge/IN_PROGRESS...-GREY.svg)]()
+| Accepting suggestions... :)                                   |   
 
 ## Used Technology...
 
@@ -29,4 +30,4 @@ This project has been building to use my new bits of knowledge about open-source
 1. HTML5
 1. CSS
 1. Bootstrap
-
+1. GitHub
