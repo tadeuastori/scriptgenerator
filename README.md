@@ -1,27 +1,32 @@
-# ScriptGeneration
+# Script Generation
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.1.
+This project was created to make easy the script generator process when we are doing some improvement or maintenance on the system at the Inflor Company. <br><br>
+With some fields filled in, this project will generate all the necessary SQL code you will need for your service.<br><br>
+Check it on [Script Generator WebSite](https://tadeuastori.github.io/scriptgenerator)
 
-## Development server
+## Features and their Test Status..
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+| Feature                   |   Test Result
+| :------------------------ |   :-------------------------:
+| Key Translator            |   [![Generic badge](https://img.shields.io/badge/PASSING-GREEN.svg)]()
+| Parameter                 |   [![Generic badge](https://img.shields.io/badge/TESTING-YELLOW.svg)]()
+| Constant                  |   [![Generic badge](https://img.shields.io/badge/TESTING-YELLOW.svg)]()
+| New Page                  |   [![Generic badge](https://img.shields.io/badge/PENDING-BLUE.svg)]()
+| New Cube                  |   [![Generic badge](https://img.shields.io/badge/PENDING-BLUE.svg)]()
+| Edit Existing Cube        |   [![Generic badge](https://img.shields.io/badge/TESTING-YELLOW.svg)]()
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Coming soon...
 
-## Build
+1. Key translated automatization with Google Translator API
+1. Accepting suggestions... :)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Used Technology...
 
-## Running unit tests
+This project has been building to use my new bits of knowledge about open-source technology, such:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. Angular
+1. HTML5
+1. CSS
+1. Bootstrap
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
