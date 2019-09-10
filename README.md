@@ -9,11 +9,11 @@ Check it on [Script Generator WebSite](https://tadeuastori.github.io/scriptgener
 | Feature                   |   Test Result
 | :------------------------ |   :-------------------------:
 | Key Translator            |   [![Generic badge](https://img.shields.io/badge/PASSING-SUCCESS.svg)]()
-| Parameter                 |   [![Generic badge](https://img.shields.io/badge/TESTING-YELLOW.svg)]()
-| Constant                  |   [![Generic badge](https://img.shields.io/badge/TESTING-YELLOW.svg)]()
-| New Page                  |   [![Generic badge](https://img.shields.io/badge/PENDING-BLUE.svg)]()
+| Parameter                 |   [![Generic badge](https://img.shields.io/badge/PASSING-SUCCESS.svg)]()
+| Constant                  |   [![Generic badge](https://img.shields.io/badge/PASSING-SUCCESS.svg)]()
+| New Page                  |   [![Generic badge](https://img.shields.io/badge/PASSING-SUCCESS.svg)]()
 | New Cube                  |   [![Generic badge](https://img.shields.io/badge/PENDING-BLUE.svg)]()
-| Edit Existing Cube        |   [![Generic badge](https://img.shields.io/badge/TESTING-YELLOW.svg)]()
+| Edit Existing Cube        |   [![Generic badge](https://img.shields.io/badge/PENDING-BLUE.svg)]()
 
 ## Coming soon...
 

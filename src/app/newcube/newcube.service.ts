@@ -53,36 +53,28 @@ export class NewcubeService implements ScriptInterface {
     queryDeclare += "\t v_FlagAssociarUsuario\t nvarchar2(1);\n";
     queryDeclare += "\n";
 
-    setDefaulProfile = (!form.value["setdefaultprofile"] || (form.value["setdefaultprofile"] && (form.value["profilename"] != '' && form.value["profilename"] != null)));
-    setDefaultUser = (!form.value["setdefaultuser"] || (form.value["setdefaultuser"] && (form.value["username"] != '' && form.value["username"] != null)));
-
-console.log(!form.value["setdefaultprofile"]);
-console.log(form.value["profilename"]);
-console.log(setDefaulProfile);
-console.log(!form.value["setdefaultuser"]);
-console.log(form.value["username"]);
-console.log(setDefaultUser);
-
+    setDefaulProfile = (!form.value["setdefaultprofile"] || (form.value["setdefaultprofile"] && Boolean(form.value["profilename"])));
+    setDefaultUser = (!form.value["setdefaultuser"] || (form.value["setdefaultuser"] && Boolean(form.value["username"])));
 
     for (let item of columnList.controls) {
 
-      if (form.value["viewname"] != null &&
-        form.value["visionname"] != null &&
-        form.value["modulename"] != null &&
-        item.value["columnname"] != null &&
-        item.value["format"] != null &&
+      if (Boolean(form.value["viewname"]) &&
+        Boolean(form.value["visionname"]) &&
+        Boolean(form.value["modulename"]) &&
+        Boolean(item.value["columnname"]) &&
+        Boolean(item.value["format"]) &&
         setDefaulProfile &&
         setDefaultUser &&
-        item.value["portuguese"] != null &&
-        item.value["spanish"] != null &&
-        item.value["english"] != null) {
+        Boolean(item.value["portuguese"]) &&
+        Boolean(item.value["spanish"]) &&
+        Boolean(item.value["english"])) {
 
         listColumnName += "'" + item.value["columnname"] + "',";
         listColumnFormat += "'" + item.value["format"] + "',";
         listColumnPort += "'" + item.value["portuguese"] + "',";
         listColumnEngl += "'" + item.value["spanish"] + "',";
         listColumnSpan += "'" + item.value["english"] + "',";
-        listColumnPrevious += "'" + (item.value["columnbefore"] == null ? "" : item.value["columnbefore"]) + "',";
+        listColumnPrevious += "'" + (!Boolean(item.value["columnbefore"]) ? "" : item.value["columnbefore"]) + "',";
 
         isCreated = "S";
       }
@@ -116,7 +108,7 @@ console.log(setDefaultUser);
     queryProcedure += "\t v_NomeFisicoView := '" + form.value["viewname"] + "';\n";
     queryProcedure += "\t v_dcrVisao := '" + form.value["visionname"] + "';\n";
     queryProcedure += "\t v_dcrPrincipalModulo := '" + form.value["modulename"] + "';\n";
-    queryProcedure += "\t v_dcrObservacao := '" + form.value["note"] + "';\n";
+    queryProcedure += "\t v_dcrObservacao := '" + (!Boolean(form.value["note"]) ? "" : form.value["note"]) + "';\n";
     queryProcedure += "\t v_FlagAssociaPerfil := '" + (form.value["setdefaultprofile"] ? "S" : "N") + "';\n";
     queryProcedure += "\t v_NomePerfilAssoc := '" + form.value["profilename"] + "';\n";
     queryProcedure += "\t v_FlagAssociarUsuario := '" + (form.value["setdefaultuser"] ? "S" : "N") + "';\n";
@@ -304,9 +296,6 @@ console.log(setDefaultUser);
     queryProcedure += "\t end loop;\n";
     queryProcedure += "/*2- Loop pelos campos novos do cubo*/\n";
     queryProcedure += "\n"
-
-
-
 
     query += queryDeclare + queryProcedure;
 

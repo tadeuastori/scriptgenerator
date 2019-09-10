@@ -14,11 +14,10 @@ export class ConstantService implements ScriptInterface {
 
   generateScript(form: FormGroup, constantList: FormArray) {
     var declareSession = "";
-    var querySelect = "\t /*Get Constant Value*/\n";
+    var querySelect = "";
     var queryProcedure = "\t /*Insert Constant*/\n";
-    var queryUpdate = "\t /*Review the constant*/\n";
+    var queryUpdate = "";
     var query = "";
-    var isReviewed = 'P'
     var isCreated = "N";
     var contConst = 1;
     var varValue = '';
@@ -27,18 +26,20 @@ export class ConstantService implements ScriptInterface {
 
     for (let item of constantList.controls) {
 
-      if (item.value["constant"] != null &&
-        item.value["table"] != null &&
-        item.value["column"] != null &&
-        (item.value["subquery"] != null || item.value["value"] != null) &&
-        item.value["observation"] != null) {
+      if (Boolean(item.value["constant"]) &&
+        Boolean(item.value["table"]) &&
+        Boolean(item.value["column"]) &&
+        (Boolean(item.value["subquery"]) || Boolean(item.value["value"])) &&
+        Boolean(item.value["observation"])) {
 
         /*########################*/
-        if (item.value["subquery"] != null) {
+        if (Boolean(item.value["subquery"])) {
 
           strAux = item.value["subquery"];
 
           if ((strAux.includes("from") || strAux.includes("FROM")) && (strAux.includes("select") || strAux.includes("SELECT"))) {
+
+            if (!Boolean(querySelect)) { querySelect = "\t /*Get Constant Value*/\n" }
 
             strAux = strAux.replace("\t", "").replace("FROM", "from"); /*IT CAN'T BE UPPERCASE*/
 
@@ -48,7 +49,7 @@ export class ConstantService implements ScriptInterface {
 
             querySelect += "\n\n";
 
-            declareSession += "V_CODIGO_" + contConst + ",";
+            declareSession += "\t V_CODIGO_" + contConst + ",";
             varValue = "V_CODIGO_" + contConst;
           }
           else {
@@ -62,22 +63,23 @@ export class ConstantService implements ScriptInterface {
 
 
         /*########################*/
-        queryProcedure += "\t PR_INSERE_SIS_CONSTANTE(";
-        queryProcedure += " P_DCR_CONSTANTE    => '" + item.value["constant"] + "', \n";
-        queryProcedure += "\t\t\t\t\t\t\t P_NOM_TABELA       => '" + item.value["table"] + "', \n";
-        queryProcedure += "\t\t\t\t\t\t\t P_NOM_COLUNA       => '" + item.value["column"] + "', \n";
-        queryProcedure += "\t\t\t\t\t\t\t P_CD_REGISTRO_EGF  => " + varValue + ", \n";
-        queryProcedure += "\t\t\t\t\t\t\t DCR_OBSERVACAO     => '" + item.value["observation"] + "');";
+        queryProcedure += "\t PR_INSERE_SIS_CONSTANTE( ";
+        queryProcedure += " P_DCR_CONSTANTE\t => '" + item.value["constant"] + "', \n";
+        queryProcedure += "\t\t\t\t\t\t\t P_NOM_TABELA\t\t => '" + item.value["table"] + "', \n";
+        queryProcedure += "\t\t\t\t\t\t\t P_NOM_COLUNA\t\t => '" + item.value["column"] + "', \n";
+        queryProcedure += "\t\t\t\t\t\t\t P_CD_REGISTRO_EGF\t => " + varValue + ", \n";
+        queryProcedure += "\t\t\t\t\t\t\t DCR_OBSERVACAO\t => '" + item.value["observation"] + "');";
         queryProcedure += "\n\n";
 
 
         /*########################*/
-        if (item.value["isreviewed"]) { isReviewed = "R"; }
-        else { isReviewed = "P"; }
+        if (Boolean(item.value["isreviewed"])) {
 
-        queryUpdate += "\t UPDATE SIS_CONSTANTE SET TIP_REG = '" + isReviewed + "' WHERE DCR_CONSTANTE = '" + item.value["constant"] + "';";
-        queryUpdate += "\n";
+          if (!Boolean(queryUpdate)) { queryUpdate = "\t /*Review the constant*/\n" }
 
+          queryUpdate += "\t UPDATE SIS_CONSTANTE SET TIP_REG = 'R' WHERE DCR_CONSTANTE = '" + item.value["constant"] + "';";
+          queryUpdate += "\n";
+        }
 
         /*########################*/
 

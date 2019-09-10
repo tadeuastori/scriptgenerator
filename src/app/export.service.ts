@@ -19,7 +19,7 @@ export class ExportService {
   }
 
   setMessageDownload(): string {
-    return 'Script has been download to your computer';
+    return 'The script is ready for download';    
   }
 
   copyGeneratedScript(value: string) {

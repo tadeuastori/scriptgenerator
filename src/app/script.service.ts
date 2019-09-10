@@ -21,4 +21,9 @@ export class ScriptService {
     this.script = '';
   }
 
+  // isNull(field: any): boolean{
+
+  //   return (field && field != '' && field != null);
+
+  // }
 }

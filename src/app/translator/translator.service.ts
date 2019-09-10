@@ -22,11 +22,11 @@ export class TranslatorService implements ScriptInterface {
 
     for (let item of translateList.controls) {
 
-      if (item.value["key"] != null &&
-        item.value["portuguese"] != null &&
-        item.value["english"] != null &&
-        item.value["spanish"] != null) {
-          
+      if (Boolean(item.value["key"]) &&
+        Boolean(item.value["portuguese"]) &&
+        Boolean(item.value["english"]) &&
+        Boolean(item.value["spanish"])) {
+
         if (item.value["force"]) { isForce = "S"; }
         else { isForce = "N"; }
 
@@ -41,8 +41,7 @@ export class TranslatorService implements ScriptInterface {
 
         isCreated = "S";
       }
-      else
-      {
+      else {
         isCreated = "N";
       }
 
@@ -52,17 +51,15 @@ export class TranslatorService implements ScriptInterface {
 
     if (form.value["getbeginend"]) { query += "End;"; }
 
-    if (isCreated == "S") 
-      { this.scriptservice.setScript(query); }
-    else
-      { this.cleanScript(); }
+    if (isCreated == "S") { this.scriptservice.setScript(query); }
+    else { this.cleanScript(); }
   }
 
   cleanScript() {
     this.scriptservice.cleanScript();
   }
 
-/*###################################################################################*/
+  /*###################################################################################*/
 
   createTranslate(fb: FormBuilder): FormGroup {
     return fb.group({

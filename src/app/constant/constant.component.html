@@ -58,7 +58,7 @@
                                 <div class="input-group-prepend">
                                  <span class="input-group-text">Sub-Query</span>
                                 </div>
-                                <textarea class="form-control" aria-label="SubQuery" aria-describedby="SubQuery"
+                                <textarea class="form-control" aria-label="SubQuery" aria-describedby="SubQuery" [readonly]="getConstantFormGroup(i).controls['value'].value"
                                     formControlName="subquery" (change)="generateScript()" rows="5" placeholder="Subquery to get the constant value from the some table."></textarea>
                             </div>
                             <small class="text-danger"
@@ -86,7 +86,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">Value</span>
                                 </div>
-                                <input type="text" class="form-control" aria-label="Value" (change)="generateScript()"
+                                <input type="text" class="form-control" aria-label="Value" (change)="generateScript()" [readonly]="getConstantFormGroup(i).controls['subquery'].value"
                                     aria-describedby="basic-addon1" formControlName="value" placeholder="Constant Value">
                             </div>
                             <small class="text-danger"

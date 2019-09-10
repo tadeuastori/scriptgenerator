@@ -20,7 +20,7 @@ export class ParameterService implements ScriptInterface {
     var isReviewed = 'P'
     var isCreated = "N";
 
-    if (form.value["getbeginend"]) { query += "Begin\n\n"; }
+    query += "Begin\n\n";
 
 
     for (let item of translateList.controls) {
@@ -35,16 +35,15 @@ export class ParameterService implements ScriptInterface {
         queryProcedure += "\t PR_INSERE_SIS_PARAMETRO('" + item.value["parameter"] + "', '" + item.value["value"] + "', '" + item.value["observation"] + "', '" + isGlobal + "'); \n";
 
 
-        if (item.value["isreviewed"]) { isReviewed = "R"; }
-        else { isReviewed = "P"; }
+        if (item.value["isreviewed"] != null && item.value["isreviewed"] == true) {
+          queryUpdate += "\t UPDATE SIS_PARAMETRO SET TIP_REG = '" + isReviewed + "' WHERE DCR_PARAMETRO = '" + item.value["parameter"] + "';";
+          queryUpdate += "\n";
+        }
 
-        queryUpdate += "\t UPDATE SIS_PARAMETRO SET TIP_REG = '" + isReviewed + "' WHERE DCR_PARAMETRO = '" + item.value["parameter"] + "';";
-        queryUpdate += "\n";
 
         isCreated = "S";
       }
-      else
-      {
+      else {
         isCreated = "N";
       }
 
@@ -54,12 +53,10 @@ export class ParameterService implements ScriptInterface {
 
     if (form.value["getcommit"]) { query += "\t Commit;\n\n"; }
 
-    if (form.value["getbeginend"]) { query += "End;"; }
+    query += "End;";
 
-    if (isCreated == "S") 
-      { this.scriptservice.setScript(query); }
-    else
-      { this.cleanScript(); }
+    if (isCreated == "S") { this.scriptservice.setScript(query); }
+    else { this.cleanScript(); }
   }
 
   cleanScript() {

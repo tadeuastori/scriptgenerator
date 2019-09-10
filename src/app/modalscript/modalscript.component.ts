@@ -16,6 +16,7 @@ export class ModalscriptComponent implements OnInit {
     private exportService: ExportService) {
     interval(1000).subscribe(x => this.generatedScript = this.scriptservice.GetScript());
     interval(500).subscribe(y => this.enableBtn = (this.generatedScript == ''));
+    interval(7000).subscribe(y => this.checkMessage());
   }
 
   pageTitleModal: string = '';
@@ -42,7 +43,7 @@ export class ModalscriptComponent implements OnInit {
   cleanMessage(): void {
     this.scriptservice.setScript(this.generatedScript);
     this.copyMessage = this.exportService.cleanMessage();
-    this.wasGenerated();
+    this.enableBtn = this.generatedScript == '';
   }
 
   dynamicDownloadTxt(): void {
@@ -52,8 +53,10 @@ export class ModalscriptComponent implements OnInit {
 
   //######################
 
-  wasGenerated() {
-    this.enableBtn = this.generatedScript == '';
+  checkMessage() {    
+    if(Boolean(this.copyMessage)){
+      this.copyMessage = this.exportService.cleanMessage();
+    }
   }
 
 }

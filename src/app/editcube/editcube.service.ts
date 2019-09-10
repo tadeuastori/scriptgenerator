@@ -26,13 +26,13 @@ export class EditcubeService implements ScriptInterface {
 
     queryDeclare += "DECLARE \n\n";
     queryDeclare += "/*O index do varray é a quantidade de colunas a serem criados*/ \n";
-    queryDeclare += "\t type t_Coluna is varray("+ columnList.controls.length +") of nvarchar2(100);\n";
-    queryDeclare += "\t type t_Anterior is varray("+ columnList.controls.length +") of nvarchar2(100);\n";
-    queryDeclare += "\t type t_Traducao is varray("+ columnList.controls.length +") of nvarchar2(100);\n";
-    queryDeclare += "\t type t_Formato is varray("+ columnList.controls.length +") of nvarchar2(100);\n";
+    queryDeclare += "\t type t_Coluna is varray(" + columnList.controls.length + ") of nvarchar2(100);\n";
+    queryDeclare += "\t type t_Anterior is varray(" + columnList.controls.length + ") of nvarchar2(100);\n";
+    queryDeclare += "\t type t_Traducao is varray(" + columnList.controls.length + ") of nvarchar2(100);\n";
+    queryDeclare += "\t type t_Formato is varray(" + columnList.controls.length + ") of nvarchar2(100);\n";
     queryDeclare += "\n";
     queryDeclare += "/*Declaração da variável de formato da coluna*/\n";
-    queryDeclare += "\t v_FormatoColunaCubo NVARCHAR2(50) := '';\n";
+    queryDeclare += "\t v_FormatoColunaCubo NVARCHAR2(50);\n";
     queryDeclare += "\n";
     queryDeclare += "/*Linguas cadastradas no sistema*/\n";
     queryDeclare += "\t Cursor c_Language is (\n";
@@ -41,45 +41,44 @@ export class EditcubeService implements ScriptInterface {
     queryDeclare += "\t );\n";
     queryDeclare += "\n";
     queryDeclare += "/*Nome da tabela da visão (cubo/view)*/  \n";
-    queryDeclare += "\t v_NomeViewCubo nvarchar2(30) := '"+form.value["viewname"]+"';\n";
+    queryDeclare += "\t v_NomeViewCubo nvarchar2(30) := '" + form.value["viewname"] + "';\n";
 
     for (let item of columnList.controls) {
 
-      if (form.value["viewname"] != null &&
-        item.value["columnname"] != null &&
-        item.value["format"] != null &&
-        item.value["portuguese"] != null &&
-        item.value["spanish"] != null &&
-        item.value["english"] != null) {
-       
-          listColumnName += "'" + item.value["columnname"] + "',";
-          listColumnFormat += "'" + item.value["format"] + "',";
-          listColumnPort += "'" + item.value["portuguese"] + "',";
-          listColumnEngl += "'" + item.value["spanish"] + "',";
-          listColumnSpan += "'" + item.value["english"] + "',";
-          listColumnPrevious += "'" + (item.value["columnbefore"] == null ? "" : item.value["columnbefore"]) + "',";
+      if (Boolean(form.value["viewname"]) &&
+        Boolean(item.value["columnname"]) &&
+        Boolean(item.value["format"]) &&
+        Boolean(item.value["portuguese"]) &&
+        Boolean(item.value["spanish"]) &&
+        Boolean(item.value["english"])) {
+
+        listColumnName += "'" + item.value["columnname"] + "',";
+        listColumnFormat += "'" + item.value["format"] + "',";
+        listColumnPort += "'" + item.value["portuguese"] + "',";
+        listColumnEngl += "'" + item.value["spanish"] + "',";
+        listColumnSpan += "'" + item.value["english"] + "',";
+        listColumnPrevious += "'" + (!Boolean(item.value["columnbefore"]) ? "" : item.value["columnbefore"]) + "',";
 
         isCreated = "S";
       }
-      else
-      {
+      else {
         isCreated = "N";
       }
 
     }
 
     queryDeclare += "/*Nome(s) do(s) campo(s) novo(s)*/\n";
-    queryDeclare += "\t var_NovaColuna t_Coluna := t_Coluna("+listColumnName.slice(0, -1)+");\n";
+    queryDeclare += "\t var_NovaColuna t_Coluna := t_Coluna(" + listColumnName.slice(0, -1) + ");\n";
     queryDeclare += "/*Nome(s) da(s) colunas(s) onde a(s) nova(s) coluna(s) será(ão) adiciona(s) posteriormente*/\n";
     queryDeclare += "/*Deixar em branco caso queira adicionar ao fim do cubo*/\n";
-    queryDeclare += "\t var_ColunaAnterior t_Anterior := t_Anterior("+listColumnPrevious.slice(0, -1)+");\n";
+    queryDeclare += "\t var_ColunaAnterior t_Anterior := t_Anterior(" + listColumnPrevious.slice(0, -1) + ");\n";
     queryDeclare += "/*Formato(s) do(s) campo(s) novo(s)*/\n";
-    queryDeclare += "\t var_NovoFormato t_Formato := t_Formato("+listColumnFormat.slice(0, -1)+")\n";
+    queryDeclare += "\t var_NovoFormato t_Formato := t_Formato(" + listColumnFormat.slice(0, -1) + ")\n";
     queryDeclare += "/*Tradução(ões) do(s) campo(s) novo(s)*/\n";
-    queryDeclare += "\t var_NovaTraducaoPt t_Traducao := t_Traducao("+listColumnPort.slice(0, -1)+")\n";
-    queryDeclare += "\t var_NovaTraducaoEs t_Traducao := t_Traducao("+listColumnSpan.slice(0, -1)+")\n";
-    queryDeclare += "\t var_NovaTraducaoEn t_Traducao := t_Traducao("+listColumnEngl.slice(0, -1)+")\n";
-    queryDeclare += "\t var_NovaTraducaoZh t_Traducao := t_Traducao("+listColumnEngl.slice(0, -1)+")\n";
+    queryDeclare += "\t var_NovaTraducaoPt t_Traducao := t_Traducao(" + listColumnPort.slice(0, -1) + ")\n";
+    queryDeclare += "\t var_NovaTraducaoEs t_Traducao := t_Traducao(" + listColumnSpan.slice(0, -1) + ")\n";
+    queryDeclare += "\t var_NovaTraducaoEn t_Traducao := t_Traducao(" + listColumnEngl.slice(0, -1) + ")\n";
+    queryDeclare += "\t var_NovaTraducaoZh t_Traducao := t_Traducao(" + listColumnEngl.slice(0, -1) + ")\n";
     queryDeclare += "/*### SE PRECISAR ADICIONAR OUTRO IDIOMA QUE NÃO ESTEJA AQUI, DEVE SER CRIADO UM NOVO CURSOR E ADICIONAR ELE NO LOOP NO FINAL DO SCRIPT ###*/ \n";
     queryDeclare += "\n";
     queryDeclare += "/*Variável para controle da visão*/\n";
@@ -139,8 +138,8 @@ export class EditcubeService implements ScriptInterface {
     queryProcedure += "\t\t WHERE EXISTS (\n";
     queryProcedure += "\t\t\t\t\t\t SELECT 	1\n";
     queryProcedure += "\t\t\t\t\t\t FROM 		ADM_RELATORIO R\n";
-    queryProcedure += "\t\t\t\t\t\t INNER JOIN 	CON_VISAO V 			ON V.CD_VISAO = R.CD_VISAO\n";
-    queryProcedure += "\t\t\t\t\t\t INNER JOIN 	CON_COLUNA_VISAO CV 	ON V.CD_VISAO = R.CD_VISAO\n";
+    queryProcedure += "\t\t\t\t\t\t INNER JOIN CON_VISAO V 			ON V.CD_VISAO = R.CD_VISAO\n";
+    queryProcedure += "\t\t\t\t\t\t INNER JOIN CON_COLUNA_VISAO CV 	ON V.CD_VISAO = R.CD_VISAO\n";
     queryProcedure += "\t\t\t\t\t\t WHERE 1=1\n";
     queryProcedure += "\t\t\t\t\t\t AND UPPER(CV.DCR_CHAVE_TRADUCAO) 	= (v_NomeViewCubo || '.' || var_NovaColuna(i))\n";
     queryProcedure += "\t\t\t\t\t\t AND UPPER(V.DCR_NOME_FISICO) 		= v_NomeViewCubo\n";
@@ -153,8 +152,8 @@ export class EditcubeService implements ScriptInterface {
     queryProcedure += "\t\t UPDATE  ADM_CAMPO_RELATORIO\n";
     queryProcedure += "\t\t SET 	NUM_SEQUENCIA =	decode(var_ColunaAnterior(i), '',\n";
     queryProcedure += "\t\t\t\t\t (\n";
-    queryProcedure += "\t\t\t\t\t  SELECT 	max(CR.NUM_SEQUENCIA) +\n"; 1
-    queryProcedure += "\t\t\t\t\t  FROM 		ADM_RELATORIO R\n";
+    queryProcedure += "\t\t\t\t\t  SELECT\t\t max(CR.NUM_SEQUENCIA) +\n"; 1
+    queryProcedure += "\t\t\t\t\t  FROM\t\t\t ADM_RELATORIO R\n";
     queryProcedure += "\t\t\t\t\t  INNER JOIN 	CON_VISAO V 			ON V.CD_VISAO = R.CD_VISAO\n";
     queryProcedure += "\t\t\t\t\t  INNER JOIN 	CON_COLUNA_VISAO CV 	ON V.CD_VISAO = R.CD_VISAO\n";
     queryProcedure += "\t\t\t\t\t  INNER JOIN 	ADM_CAMPO_RELATORIO  CR ON (CR.CD_RELATORIO = R.CD_RELATORIO AND CR.CD_COLUNA_VISAO = CV.CD_COLUNA_VISAO)\n";
@@ -162,8 +161,8 @@ export class EditcubeService implements ScriptInterface {
     queryProcedure += "\t\t\t\t\t  AND UPPER(V.DCR_NOME_FISICO) 		= v_NomeViewCubo\n";
     queryProcedure += "\t\t\t\t\t ),\n";
     queryProcedure += "\t\t\t\t\t (\n";
-    queryProcedure += "\t\t\t\t\t  SELECT 	CR.NUM_SEQUENCIA + 1\n";
-    queryProcedure += "\t\t\t\t\t  FROM 		ADM_RELATORIO R\n";
+    queryProcedure += "\t\t\t\t\t  SELECT\t\t CR.NUM_SEQUENCIA + 1\n";
+    queryProcedure += "\t\t\t\t\t  FROM\t\t\t ADM_RELATORIO R\n";
     queryProcedure += "\t\t\t\t\t  INNER JOIN 	CON_VISAO V 			ON V.CD_VISAO = R.CD_VISAO\n";
     queryProcedure += "\t\t\t\t\t  INNER JOIN 	CON_COLUNA_VISAO CV 	ON V.CD_VISAO = R.CD_VISAO\n";
     queryProcedure += "\t\t\t\t\t  INNER JOIN 	ADM_CAMPO_RELATORIO  CR ON (CR.CD_RELATORIO = R.CD_RELATORIO AND CR.CD_COLUNA_VISAO = CV.CD_COLUNA_VISAO)\n";
@@ -220,10 +219,8 @@ export class EditcubeService implements ScriptInterface {
 
     query += "End;";
 
-    if (isCreated == "S") 
-      { this.scriptservice.setScript(query); }
-    else
-      { this.cleanScript(); }
+    if (isCreated == "S") { this.scriptservice.setScript(query); }
+    else { this.cleanScript(); }
   }
 
   cleanScript() {

@@ -34,7 +34,6 @@ export class ParameterComponent implements OnInit {
 
     this.form = this.fb.group({
       getcommit: [true],
-      getbeginend: [true],
       parameter: this.fb.array([this.createParameter()])
     });
 
