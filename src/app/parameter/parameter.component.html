@@ -40,7 +40,9 @@
             style="margin-bottom: 5px;">
 
             <div [formGroupName]="i">
+
                 <div class="card-body">
+
                     <div class="row mb-1">
                         <div class="col-sm-6">
                             <div class="input-group mb-1">
@@ -82,7 +84,7 @@
                     </div>
 
                     <div class="row mb-1">
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">Value</span>
@@ -94,14 +96,29 @@
                                 *ngIf="getParameterFormGroup(i).controls['value'].hasError('required')">
                                 Parameter Value is required! </small>&nbsp;
                         </div>
-                        <div class="col-sm-8">
+
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Alternative Value</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Alternative Value"
+                                    (change)="generateScript()" aria-describedby="basic-addon1"
+                                    formControlName="alternativevalue" placeholder="Value that will be inserted in other customers">
+                            </div>
+                            &nbsp;
+                        </div>
+                    </div>
+
+                    <div class="row mb-1">
+                        <div class="col-sm">
+
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">Note</span>
                                 </div>
-                                <input type="text" class="form-control" aria-label="Note"
-                                    (change)="generateScript()" aria-describedby="basic-addon1"
-                                    formControlName="observation">
+                                <input type="text" class="form-control" aria-label="Note" (change)="generateScript()"
+                                    aria-describedby="basic-addon1" formControlName="observation">
                             </div>
                             <small class="text-danger"
                                 *ngIf="getParameterFormGroup(i).controls['observation'].hasError('required')">
@@ -110,6 +127,7 @@
                     </div>
 
                 </div>
+
                 <div class="card-footer text-right">
                     <small class="text-muted">
 

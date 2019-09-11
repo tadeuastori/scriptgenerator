@@ -19,6 +19,7 @@ export class PageService implements ScriptInterface {
     var isCreated = "N";
     var queryProcedure = "";
     var queryTranducao = "";
+    var queryAlternativeValue = "";
 
     query += "Begin\n\n"
 
@@ -80,6 +81,15 @@ export class PageService implements ScriptInterface {
 
         queryProcedure += "\n\n";
 
+        if (Boolean(item.value["blockpage"]) && Boolean(item.value["url"])) {
+          if (!Boolean(queryAlternativeValue)) { queryAlternativeValue = "\t /*Cria queries para aplicar em outros clientes*/\n" }
+
+          queryAlternativeValue += "\t update\t seg_funcao\n";
+          queryAlternativeValue += "\t set\t\t flag_bloqueio = 'S'\n";
+          queryAlternativeValue += "\t where\t lower(dcr_url) = lower('" + item.value["url"] + "')\n";
+          queryAlternativeValue += "\t and\t\t lower(dcr_funcao) = lower('" + item.value["name"] + "');\n\n";
+        } 
+
         isCreated = "S";
       }
       else {
@@ -94,7 +104,22 @@ export class PageService implements ScriptInterface {
 
     query += "End;";
 
-    if (isCreated == "S") { this.scriptservice.setScript(query); }
+
+    if (Boolean(queryAlternativeValue)) {
+
+      queryAlternativeValue = "Begin \n\n" + queryAlternativeValue + "\n"
+      
+      if (form.value["getcommit"]) { queryAlternativeValue += "\tCommit;\n\n"; }
+
+      queryAlternativeValue += "end;"      
+
+    } 
+
+
+    if (isCreated == "S") { 
+      this.scriptservice.setScript(query); 
+      this.scriptservice.setAlternativeScript(queryAlternativeValue);
+    }
     else { this.cleanScript(); }
   }
 

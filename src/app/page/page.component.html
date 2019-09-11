@@ -1,6 +1,6 @@
 <form [formGroup]="form">
 
-    <div class="card"  id="formHeader">
+    <div class="card" id="formHeader">
         <div class="card-body">
 
             <div class="container">
@@ -76,8 +76,7 @@
                                 <input type="text" class="form-control" aria-label="URL" aria-describedby="basic-addon1"
                                     formControlName="url" (change)="generateScript()">
                             </div>
-                            <small class="text-danger" *ngIf="getPageFormGroup(i).controls['url'].hasError('required')">
-                                URL is required! </small> &nbsp;
+                            &nbsp;
                         </div>
                     </div>
 
@@ -174,7 +173,8 @@
                                     <span class="input-group-text" id="basic-addon1">English</span>
                                 </div>
                                 <input type="text" class="form-control" aria-label="English" (change)="generateScript()"
-                                    aria-describedby="basic-addon1" formControlName="english" placeholder="Column Name in english">
+                                    aria-describedby="basic-addon1" formControlName="english"
+                                    placeholder="Column Name in english">
                             </div>
                             <small class="text-danger"
                                 *ngIf="getPageFormGroup(i).controls['english'].hasError('required')">
@@ -189,7 +189,8 @@
                                     <span class="input-group-text" id="basic-addon1">Spanish</span>
                                 </div>
                                 <input type="text" class="form-control" aria-label="Spanish" (change)="generateScript()"
-                                    aria-describedby="basic-addon1" formControlName="spanish" placeholder="Column Name in spanish">
+                                    aria-describedby="basic-addon1" formControlName="spanish"
+                                    placeholder="Column Name in spanish">
                             </div>
                             <small class="text-danger"
                                 *ngIf="getPageFormGroup(i).controls['spanish'].hasError('required')">
@@ -210,6 +211,32 @@
                                     Update?</label>&nbsp;
                             </div>
                         </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <input type="checkbox" aria-label="Checkbox for following text input"
+                                            formControlName="blockpage" (change)="generateScript()">
+                                    </div>
+                                </div>
+                                <label class="form-control" aria-label="label with checkbox" readonly>Block page in
+                                    other customers?</label>&nbsp;
+                            </div>
+                            <small class="text-danger" *ngIf="!getPageFormGroup(i).controls['url'].value">
+                                URL is required! </small>&nbsp;
+                        </div>
+                        <!-- <div class="col-sm-4">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <input type="checkbox" aria-label="Checkbox for following text input"
+                                            formControlName="exists" (change)="generateScript()">
+                                    </div>
+                                </div>
+                                <label class="form-control" aria-label="label with checkbox" readonly>Check if page
+                                    exists?</label>&nbsp;
+                            </div>
+                        </div> -->
                     </div>
 
                 </div>

@@ -61,7 +61,9 @@ export class PageComponent implements OnInit {
       portuguese: [null, Validators.compose([Validators.required])],
       english: [null, Validators.compose([Validators.required])],
       spanish: [null, Validators.compose([Validators.required])],
-      force: ['N']
+      force: ['N'],
+      blockpage: [false],
+      exists: [false]
     });
   }
 

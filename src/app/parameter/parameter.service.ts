@@ -15,6 +15,7 @@ export class ParameterService implements ScriptInterface {
   generateScript(form: FormGroup, translateList: FormArray) {
     var queryProcedure = "\t /*Parametro*/\n";
     var queryUpdate = "";
+    var queryAlternativeValue = "";
     var query = "";
     var isGlobal = 'N';
     var isCreated = "N";
@@ -43,6 +44,12 @@ export class ParameterService implements ScriptInterface {
         }
 
 
+        if (Boolean(item.value["alternativevalue"])) {
+          if (!Boolean(queryAlternativeValue)) { queryAlternativeValue = "\t /*Cria queries para aplicar em outros clientes (Caso necessário valores segregados)*/\n" }
+
+          queryAlternativeValue += "\t UPDATE SIS_PARAMETRO SET DCR_VLR_PARAMETRO = '" + item.value["alternativevalue"] + "' WHERE DCR_PARAMETRO = '" + item.value["parameter"] + "';\n";
+        } 
+
         isCreated = "S";
       }
       else {
@@ -57,7 +64,21 @@ export class ParameterService implements ScriptInterface {
 
     query += "End;";
 
-    if (isCreated == "S") { this.scriptservice.setScript(query); }
+    if (Boolean(queryAlternativeValue)) {
+
+      queryAlternativeValue = "Begin \n\n" + queryAlternativeValue + "\n"
+      queryAlternativeValue += queryUpdate + "\n";
+      
+      if (form.value["getcommit"]) { queryAlternativeValue += "\tCommit;\n\n"; }
+
+      queryAlternativeValue += "end;"      
+
+    } 
+
+    if (isCreated == "S") { 
+      this.scriptservice.setScript(query); 
+      this.scriptservice.setAlternativeScript(queryAlternativeValue);
+    }
     else { this.cleanScript(); }
   }
 

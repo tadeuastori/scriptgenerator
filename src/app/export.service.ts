@@ -18,11 +18,19 @@ export class ExportService {
     return 'Script has been copied to Clipboard';
   }
 
+  setAlternativeMessageCopyClipBoard(): string {
+    return 'Alternative script has been copied to Clipboard';
+  }
+
   setMessageDownload(): string {
     return 'The script is ready for download';    
   }
 
-  copyGeneratedScript(value: string) {
+  setAlternativeMessageDownload(): string {
+    return 'The alternative script is ready for download';    
+  }
+
+  copyGeneratedScript(value: string, div: string, aba: string) {
 
     this.generatedScript = value;
     
@@ -33,8 +41,9 @@ export class ExportService {
     selBox.style.opacity = '0';
     selBox.value = this.generatedScript;
 
-    var divAtual = document.getElementById("divConteudo");
-    var divText = document.getElementById("generatedScript");
+    var divAtual = document.getElementById(div);
+    var divText = document.getElementById(aba);
+    
 
     divAtual.insertBefore(selBox, divText);
 

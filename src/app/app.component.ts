@@ -1,5 +1,4 @@
 import { Component, ChangeDetectorRef, OnInit  } from '@angular/core';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +12,6 @@ export class AppComponent implements OnInit{
   isMobileDevice: boolean = false;
 
   constructor(
-    private location: Location,
     private cdr: ChangeDetectorRef
   ) { }
 
@@ -29,11 +27,6 @@ export class AppComponent implements OnInit{
     this.checkDevice();
     this.cdr.detectChanges();
   }
-
-  goBack(): void {
-    this.checkDevice();
-    this.location.back();
-  }    
 
   checkDevice(): void{
     var ua = navigator.userAgent;

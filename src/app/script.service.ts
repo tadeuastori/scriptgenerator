@@ -8,22 +8,26 @@ export class ScriptService {
   constructor() { }
 
   private script: string = '';
+  private alternativeScript: string = '';
   
   GetScript(): string{
     return this.script;
+  }
+
+  GetAlternativeScript(): string{
+    return this.alternativeScript;
   }
 
   setScript(value: string){
     this.script = value;
   }
 
-  cleanScript(){
-    this.script = '';
+  setAlternativeScript(value: string){
+    this.alternativeScript = value;
   }
 
-  // isNull(field: any): boolean{
-
-  //   return (field && field != '' && field != null);
-
-  // }
+  cleanScript(){
+    this.script = '';
+    this.alternativeScript = '';
+  }
 }

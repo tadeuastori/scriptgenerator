@@ -52,6 +52,7 @@ export class ParameterComponent implements OnInit {
     return this.fb.group({
       parameter: [null, Validators.compose([Validators.required])],
       value: [null, Validators.compose([Validators.required])],
+      alternativevalue: [null],
       observation: [null, Validators.compose([Validators.required])],
       isreviewed: [true],
       globalparameter: [false]
@@ -82,6 +83,7 @@ export class ParameterComponent implements OnInit {
   //#########################################################################################
 
   generateScript() {
+    console.log(this.parameterList.value);
     this.parameterservice.generateScript(this.form, this.parameterList);
   }
 
