@@ -5,27 +5,31 @@
 [![Generic badge](https://img.shields.io/badge/CSS-3-BLUE.svg)]()
 
 <BR>
-
 This project was created to make easy the script generator process when we are doing some improvement or maintenance on the system at the Inflor Company. <br><br>
-With some fields filled in, this project will generate all the necessary SQL code you will need for your service.<br><br>
-Check it on [Script Generator WebSite](https://tadeuastori.github.io/scriptgenerator)
+With some fields filled in, this project will generate all the necessary SQL code you will need for your service.
+<br>
 
-## Features and their Test Status..
+> Check it on [Script Generator WebSite](https://tadeuastori.github.io/scriptgenerator)
 
-| Features                  |   Test Result
-| :------------------------ |   :-------------------------:
-| Key Translator            |   [![Generic badge](https://img.shields.io/badge/PASSING-SUCCESS.svg)]()
-| Parameter                 |   [![Generic badge](https://img.shields.io/badge/PASSING-SUCCESS.svg)]()
-| Constant                  |   [![Generic badge](https://img.shields.io/badge/PASSING-SUCCESS.svg)]()
-| New Page                  |   [![Generic badge](https://img.shields.io/badge/PASSING-SUCCESS.svg)]()
-| New Cube                  |   [![Generic badge](https://img.shields.io/badge/PENDING-BLUE.svg)]()
-| Edit Existing Cube        |   [![Generic badge](https://img.shields.io/badge/PENDING-BLUE.svg)]()
 
-## Coming soon...
+## Features and their development status..
 
-| Features                                                      |   Development Status
+| Features                  |   Status
+| :------------------------ |   -------------------------:
+| Key Translator            |   [![Generic badge](https://img.shields.io/badge/DONE-SUCCESS.svg)]()
+| Parameter                 |   [![Generic badge](https://img.shields.io/badge/DONE-SUCCESS.svg)]()
+| Constant                  |   [![Generic badge](https://img.shields.io/badge/DONE-SUCCESS.svg)]()
+| New Page                  |   [![Generic badge](https://img.shields.io/badge/DONE-SUCCESS.svg)]()
+| New Cube                  |   [![Generic badge](https://img.shields.io/badge/DONE-SUCCESS.svg)]()
+| Edit Existing Cube        |   [![Generic badge](https://img.shields.io/badge/DONE-SUCCESS.svg)]()
+| Control Function          |   [![Generic badge](https://img.shields.io/badge/IN_PROGRESS...-GREY.svg)]()
+
+## Something's Coming soon...
+
+| Features                                                      |   Status
 | :------------------------------------------------------------ |   -------------------------:
-| Key translated automatization with Google Translator API      |   [![Generic badge](https://img.shields.io/badge/IN_PROGRESS...-GREY.svg)]()
+| Key translated automatization with Google Translator API      |   [![Generic badge](https://img.shields.io/badge/COMING_SOON-ORANGE.svg)]()
+| Key import process      |   [![Generic badge](https://img.shields.io/badge/COMING_SOON-ORANGE.svg)]()
 | Accepting suggestions... :)                                   |   
 
 ## Used Technology...
