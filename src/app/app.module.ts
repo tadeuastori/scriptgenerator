@@ -12,6 +12,7 @@ import { TranslatorComponent } from './translator/translator.component';
 import { PageComponent } from './page/page.component';
 import { EditcubeComponent } from './editcube/editcube.component';
 import { NewcubeComponent } from './newcube/newcube.component';
+import { FunctioncontrolComponent } from './functioncontrol/functioncontrol.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { NewcubeComponent } from './newcube/newcube.component';
     TranslatorComponent,
     PageComponent,
     EditcubeComponent,
-    NewcubeComponent
+    NewcubeComponent,
+    FunctioncontrolComponent
   ],
   imports: [
     BrowserModule,

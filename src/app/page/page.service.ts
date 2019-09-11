@@ -40,16 +40,16 @@ export class PageService implements ScriptInterface {
 
           if (!Boolean(queryDeclare)){ queryDeclare = "declare\n\t v_cont number := 0;\n"; }          
 
-          queryCheck += "\t /*Add check if page exists*/\n";
+          queryCheck = "\t /*Add check if page exists*/\n";
           queryCheck += "\t select\t count(*)\n";
-          queryCheck += "\t into\t\t v_cont\n";
+          queryCheck += "\t into\t v_cont\n";
           queryCheck += "\t from\t seg_funcao\n";
           queryCheck += "\t where\t lower(dcr_url) = lower('"+ item.value["url"] +"');\n\n";
           
-          queryCheck += "\t if v_cont = 0 then\n\n";
-
-          queryProcedure = queryCheck + queryProcedure;
+          queryCheck += "\t if v_cont = 0 then\n\n";          
         }
+
+        queryProcedure += queryCheck;
 
         /*########################*/
         queryProcedure += "\t\t /*Add page*/\n";
@@ -69,9 +69,9 @@ export class PageService implements ScriptInterface {
         queryTranducao = "\t\t /*Add Translater*/\n";
         for (var idx in languages) {
           queryTranducao += "\t\t PR_ATUALIZA_SEG_FUNCAO_IDIOMA(";
-          queryTranducao += "\t p_dcr_url\t\t\t=> '" + (!Boolean(item.value["url"]) ? "" : item.value["url"]) + "', \n";
+          queryTranducao += "\t p_dcr_url\t\t\t\t=> '" + (!Boolean(item.value["url"]) ? "" : item.value["url"]) + "', \n";
           queryTranducao += "\t\t\t\t\t\t\t\t\t\t p_dcr_namespace\t\t=> '" + item.value["namespace"] + "', \n";
-          queryTranducao += "\t\t\t\t\t\t\t\t\t\t p_cd_language\t\t=> '" + languages[idx] + "', \n";
+          queryTranducao += "\t\t\t\t\t\t\t\t\t\t p_cd_language\t\t\t=> '" + languages[idx] + "', \n";
 
           switch (languages[idx].substr(0, 2)) {
             case 'pt':
@@ -88,7 +88,7 @@ export class PageService implements ScriptInterface {
               break;
           }
 
-          queryTranducao += "\t\t\t\t\t\t\t\t\t\t p_abrev_funcao\t\t=> '" + item.value["abbrev"] + "', \n";
+          queryTranducao += "\t\t\t\t\t\t\t\t\t\t p_abrev_funcao\t\t\t=> '" + item.value["abbrev"] + "', \n";
           queryTranducao += "\t\t\t\t\t\t\t\t\t\t p_flag_forcar_atualiz\t=> '" + item.value["force"] + "' \n";
           queryTranducao += "\t\t\t\t\t\t\t\t\t\t);\n\n";
         }

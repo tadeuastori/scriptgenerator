@@ -12,7 +12,8 @@ export const GENERATORS: Generator[] = [
   { id: ++countId, name: 'Translator Key', link: '/translator', img: pathImg + 'imgTranslator.png' },
   { id: ++countId, name: 'New Page', link: '/page', img: pathImg + 'imgPage.png' },
   { id: ++countId, name: 'Create Cube', link: '/newcube', img: pathImg + 'imgCubeNew.png' },
-  { id: ++countId, name: 'Edit Cube', link: '/editcube', img: pathImg + 'imgCubeEdit.png' }
+  { id: ++countId, name: 'Edit Cube', link: '/editcube', img: pathImg + 'imgCubeEdit.png' },
+  { id: ++countId, name: 'Function Control', link: '/functioncontrol', img: pathImg + 'imgFunctionControl.png' },
 ];
 
 export const TECHNOLOGIES: Technology [] = [

@@ -7,6 +7,7 @@ import { TranslatorComponent } from './translator/translator.component';
 import { PageComponent  } from './page/page.component';
 import { EditcubeComponent } from './editcube/editcube.component';
 import { NewcubeComponent } from './newcube/newcube.component';
+import { FunctioncontrolComponent } from './functioncontrol/functioncontrol.component';
 
 const routes: Routes = [
   { path:'', redirectTo: '/dashboard', pathMatch:'full' },
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'translator', component: TranslatorComponent },
   { path: 'page', component: PageComponent },
   { path: 'editcube', component: EditcubeComponent },
-  { path: 'newcube', component: NewcubeComponent }
+  { path: 'newcube', component: NewcubeComponent },
+  { path: 'functioncontrol', component: FunctioncontrolComponent },
 ];
 
 @NgModule({

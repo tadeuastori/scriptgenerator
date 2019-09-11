@@ -67,6 +67,17 @@ module.exports = "<form [formGroup]=\"form\">\n\n    <div class=\"card\" id=\"fo
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/functioncontrol/functioncontrol.component.html":
+/*!******************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/functioncontrol/functioncontrol.component.html ***!
+  \******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<form [formGroup]=\"form\">\n\n    <div class=\"card\" id=\"formHeader\">\n        <div class=\"card-body\">\n\n            <div class=\"container\">\n                <div class=\"row\">\n                    <div class=\"col\">\n                        <button type=\"button\" class=\"btn btn-success btn-sm\" (click)=\"addFunctionControl()\">\n                            <img alt=\"Add Parameter\" title=\"Add Function Control\" src=\"./assets/btn/btnAdd.png\" />\n                            &nbsp; Add Function Control\n                        </button>\n                    </div>\n                    <div class=\"col-sm\">\n                        <div class=\"form-check text-right\">\n                            <div class=\"row\">\n                                <div class=\"col-sm\">\n                                    <div class=\"custom-control custom-checkbox\">\n                                        <input type=\"checkbox\" class=\"custom-control-input\" id=\"customCheck1\"\n                                            formControlName=\"getcommit\" (change)=\"generateScript()\">\n                                        <label class=\"custom-control-label\" for=\"customCheck1\">Set Commit?</label>\n                                    </div>\n                                </div>\n                            </div>\n                        </div>\n\n                    </div>\n                </div>\n            </div>\n\n        </div>\n    </div>\n\n    <br>\n\n\n    <div formArrayName=\"functioncontrol\">\n        <div class=\"card\" *ngFor=\"let functionControlItem of functionControlFormGroup.controls; let i = index;\"\n            style=\"margin-bottom: 5px;\">\n\n            <div [formGroupName]=\"i\">\n                <div class=\"card-body\">\n\n                    <div class=\"row mb-1\">\n                        <div class=\"col-sm-8\">\n                            <div class=\"input-group mb-1\">\n                                <div class=\"input-group-prepend\">\n                                    <span class=\"input-group-text\" id=\"basic-addon1\">Name</span>\n                                </div>\n                                <input type=\"text\" class=\"form-control\" aria-label=\"Name\"\n                                    aria-describedby=\"basic-addon1\" formControlName=\"name\" (change)=\"generateScript()\">\n                            </div>\n                            <small class=\"text-danger\"\n                                *ngIf=\"getFunctionControlFormGroup(i).controls['name'].hasError('required')\">\n                                Name is required! </small>&nbsp;\n                        </div>\n                        <div class=\"col-sm-4\">\n                            <div class=\"input-group mb-1\">\n                                <div class=\"input-group-prepend\">\n                                    <span class=\"input-group-text\" id=\"basic-addon1\">Abbreviation</span>\n                                </div>\n                                <input type=\"text\" class=\"form-control\" aria-label=\"Abbrev\"\n                                    aria-describedby=\"basic-addon1\" formControlName=\"abbrev\"\n                                    (change)=\"generateScript()\">\n                            </div>\n                            <small class=\"text-danger\"\n                                *ngIf=\"getFunctionControlFormGroup(i).controls['abbrev'].hasError('required')\">\n                                Abbreviation is required! </small>&nbsp;\n                        </div>\n                    </div>\n\n                    <div class=\"row mb-1\">\n                        <div class=\"col-sm-8\">\n                            <div class=\"input-group mb-1\">\n                                <div class=\"input-group-prepend\">\n                                    <span class=\"input-group-text\" id=\"basic-addon1\">Id Control</span>\n                                </div>\n                                <input type=\"text\" class=\"form-control\" aria-label=\"ID Control\"\n                                    aria-describedby=\"basic-addon1\" formControlName=\"idcontrol\"\n                                    (change)=\"generateScript()\">\n                            </div>\n                            <small class=\"text-danger\"\n                                *ngIf=\"getFunctionControlFormGroup(i).controls['idcontrol'].hasError('required')\">\n                                Id Control is required! </small>&nbsp;\n                        </div>\n\n                        <div class=\"col-sm-4\">\n                            <div class=\"input-group mb-1\">\n                                <div class=\"input-group-prepend\">\n                                    <span class=\"input-group-text\" id=\"basic-addon1\">Process Type</span>\n                                </div>\n                                <input type=\"text\" class=\"form-control\" aria-label=\"Process Type\" maxlength=\"1\"\n                                    aria-describedby=\"basic-addon1\" formControlName=\"tipprocess\"\n                                    (change)=\"generateScript()\">\n                            </div>\n                            &nbsp;\n                        </div>\n                    </div>\n                </div>\n                <div class=\"card-footer text-right\">\n                    <small class=\"text-muted\">\n\n                        <button type=\"button\" class=\"btn btn-danger btn-sm\" (click)=\"removeFunctionControl(i)\">\n                            <img alt=\"Remove Function Control\" title=\"Remove Function Control\"\n                                src=\"./assets/btn/btnRemove.png\" />\n                            &nbsp; Remove Function Control\n                        </button>\n\n                    </small>\n                </div>\n            </div>\n\n        </div>\n    </div>\n\n\n\n</form>"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/modalscript/modalscript.component.html":
 /*!**********************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/modalscript/modalscript.component.html ***!
@@ -142,6 +153,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _page_page_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./page/page.component */ "./src/app/page/page.component.ts");
 /* harmony import */ var _editcube_editcube_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./editcube/editcube.component */ "./src/app/editcube/editcube.component.ts");
 /* harmony import */ var _newcube_newcube_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./newcube/newcube.component */ "./src/app/newcube/newcube.component.ts");
+/* harmony import */ var _functioncontrol_functioncontrol_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./functioncontrol/functioncontrol.component */ "./src/app/functioncontrol/functioncontrol.component.ts");
+
 
 
 
@@ -160,7 +173,8 @@ var routes = [
     { path: 'translator', component: _translator_translator_component__WEBPACK_IMPORTED_MODULE_6__["TranslatorComponent"] },
     { path: 'page', component: _page_page_component__WEBPACK_IMPORTED_MODULE_7__["PageComponent"] },
     { path: 'editcube', component: _editcube_editcube_component__WEBPACK_IMPORTED_MODULE_8__["EditcubeComponent"] },
-    { path: 'newcube', component: _newcube_newcube_component__WEBPACK_IMPORTED_MODULE_9__["NewcubeComponent"] }
+    { path: 'newcube', component: _newcube_newcube_component__WEBPACK_IMPORTED_MODULE_9__["NewcubeComponent"] },
+    { path: 'functioncontrol', component: _functioncontrol_functioncontrol_component__WEBPACK_IMPORTED_MODULE_10__["FunctioncontrolComponent"] },
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -268,6 +282,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _page_page_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./page/page.component */ "./src/app/page/page.component.ts");
 /* harmony import */ var _editcube_editcube_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./editcube/editcube.component */ "./src/app/editcube/editcube.component.ts");
 /* harmony import */ var _newcube_newcube_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./newcube/newcube.component */ "./src/app/newcube/newcube.component.ts");
+/* harmony import */ var _functioncontrol_functioncontrol_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./functioncontrol/functioncontrol.component */ "./src/app/functioncontrol/functioncontrol.component.ts");
+
 
 
 
@@ -297,7 +313,8 @@ var AppModule = /** @class */ (function () {
                 _translator_translator_component__WEBPACK_IMPORTED_MODULE_10__["TranslatorComponent"],
                 _page_page_component__WEBPACK_IMPORTED_MODULE_11__["PageComponent"],
                 _editcube_editcube_component__WEBPACK_IMPORTED_MODULE_12__["EditcubeComponent"],
-                _newcube_newcube_component__WEBPACK_IMPORTED_MODULE_13__["NewcubeComponent"]
+                _newcube_newcube_component__WEBPACK_IMPORTED_MODULE_13__["NewcubeComponent"],
+                _functioncontrol_functioncontrol_component__WEBPACK_IMPORTED_MODULE_14__["FunctioncontrolComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -671,7 +688,8 @@ var GENERATORS = [
     { id: ++countId, name: 'Translator Key', link: '/translator', img: pathImg + 'imgTranslator.png' },
     { id: ++countId, name: 'New Page', link: '/page', img: pathImg + 'imgPage.png' },
     { id: ++countId, name: 'Create Cube', link: '/newcube', img: pathImg + 'imgCubeNew.png' },
-    { id: ++countId, name: 'Edit Cube', link: '/editcube', img: pathImg + 'imgCubeEdit.png' }
+    { id: ++countId, name: 'Edit Cube', link: '/editcube', img: pathImg + 'imgCubeEdit.png' },
+    { id: ++countId, name: 'Function Control', link: '/functioncontrol', img: pathImg + 'imgFunctionControl.png' },
 ];
 var TECHNOLOGIES = [
     { id: ++countId, name: 'HTML5', img: pathLogo + 'html5.png' },
@@ -1154,6 +1172,231 @@ var ExportService = /** @class */ (function () {
         })
     ], ExportService);
     return ExportService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/functioncontrol/functioncontrol.component.css":
+/*!***************************************************************!*\
+  !*** ./src/app/functioncontrol/functioncontrol.component.css ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2Z1bmN0aW9uY29udHJvbC9mdW5jdGlvbmNvbnRyb2wuY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/functioncontrol/functioncontrol.component.ts":
+/*!**************************************************************!*\
+  !*** ./src/app/functioncontrol/functioncontrol.component.ts ***!
+  \**************************************************************/
+/*! exports provided: FunctioncontrolComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FunctioncontrolComponent", function() { return FunctioncontrolComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _generator_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../generator.service */ "./src/app/generator.service.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _functioncontrol_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./functioncontrol.service */ "./src/app/functioncontrol/functioncontrol.service.ts");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+
+
+
+
+
+
+
+
+var FunctioncontrolComponent = /** @class */ (function () {
+    function FunctioncontrolComponent(appcomponent, generatorservice, functioncontrolservice, fb, renderer2, _document) {
+        this.appcomponent = appcomponent;
+        this.generatorservice = generatorservice;
+        this.functioncontrolservice = functioncontrolservice;
+        this.fb = fb;
+        this.renderer2 = renderer2;
+        this._document = _document;
+        this.generatorList = this.generatorservice.getGenerator("/functioncontrol");
+        this.getCommit = true;
+        this.getBeginEnd = true;
+    }
+    FunctioncontrolComponent.prototype.ngOnInit = function () {
+        this.appcomponent.pageTitle = this.generatorList.name;
+        this.appcomponent.showCard = true;
+        this.functioncontrolservice.cleanScript();
+        this.form = this.fb.group({
+            getcommit: [true],
+            functioncontrol: this.fb.array([this.createFunctionControl()])
+        });
+        this.functioncontrolList = this.form.get('functioncontrol');
+        var s = this.renderer2.createElement('script');
+        s.type = 'text/javascript';
+        s.src = './assets/script/scripts.js';
+        this.renderer2.appendChild(this._document.body, s);
+        this.appcomponent.cdrMethod();
+    };
+    //#########################################################################################
+    FunctioncontrolComponent.prototype.createFunctionControl = function () {
+        return this.fb.group({
+            name: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].compose([_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required])],
+            abbrev: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].compose([_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required])],
+            idcontrol: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].compose([_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required])],
+            tipprocess: [null]
+        });
+    };
+    FunctioncontrolComponent.prototype.addFunctionControl = function () {
+        this.functioncontrolList.push(this.createFunctionControl());
+        this.generateScript();
+    };
+    FunctioncontrolComponent.prototype.removeFunctionControl = function (index) {
+        if (confirm("Are you sure to delete this " + this.generatorList.name + "?")) {
+            this.functioncontrolList.removeAt(index);
+            this.generateScript();
+        }
+    };
+    FunctioncontrolComponent.prototype.getFunctionControlFormGroup = function (index) {
+        var formGroup = this.functioncontrolList.controls[index];
+        return formGroup;
+    };
+    Object.defineProperty(FunctioncontrolComponent.prototype, "functionControlFormGroup", {
+        get: function () {
+            return this.form.get('functioncontrol');
+        },
+        enumerable: true,
+        configurable: true
+    });
+    //#########################################################################################
+    FunctioncontrolComponent.prototype.generateScript = function () {
+        this.functioncontrolservice.generateScript(this.form, this.functioncontrolList);
+    };
+    FunctioncontrolComponent.ctorParameters = function () { return [
+        { type: _app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"] },
+        { type: _generator_service__WEBPACK_IMPORTED_MODULE_3__["GeneratorService"] },
+        { type: _functioncontrol_service__WEBPACK_IMPORTED_MODULE_5__["FunctioncontrolService"] },
+        { type: _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormBuilder"] },
+        { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Renderer2"] },
+        { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_6__["DOCUMENT"],] }] }
+    ]; };
+    FunctioncontrolComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-functioncontrol',
+            template: __webpack_require__(/*! raw-loader!./functioncontrol.component.html */ "./node_modules/raw-loader/index.js!./src/app/functioncontrol/functioncontrol.component.html"),
+            styles: [__webpack_require__(/*! ./functioncontrol.component.css */ "./src/app/functioncontrol/functioncontrol.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](5, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_angular_common__WEBPACK_IMPORTED_MODULE_6__["DOCUMENT"]))
+    ], FunctioncontrolComponent);
+    return FunctioncontrolComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/functioncontrol/functioncontrol.service.ts":
+/*!************************************************************!*\
+  !*** ./src/app/functioncontrol/functioncontrol.service.ts ***!
+  \************************************************************/
+/*! exports provided: FunctioncontrolService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FunctioncontrolService", function() { return FunctioncontrolService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _script_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../script.service */ "./src/app/script.service.ts");
+
+
+
+var FunctioncontrolService = /** @class */ (function () {
+    function FunctioncontrolService(scriptservice) {
+        this.scriptservice = scriptservice;
+    }
+    FunctioncontrolService.prototype.generateScript = function (form, functioncontrolList) {
+        var e_1, _a;
+        var declareSession = "";
+        var queryProcedure = "";
+        var queryProcess = "";
+        var query = "";
+        var isCreated = "N";
+        query += "Begin\n\n";
+        try {
+            for (var _b = tslib__WEBPACK_IMPORTED_MODULE_0__["__values"](functioncontrolList.controls), _c = _b.next(); !_c.done; _c = _b.next()) {
+                var item = _c.value;
+                if (Boolean(item.value["name"]) &&
+                    Boolean(item.value["abbrev"]) &&
+                    Boolean(item.value["idcontrol"])) {
+                    /*########################*/
+                    if (Boolean(item.value["tipprocess"])) {
+                        if (!Boolean(declareSession)) {
+                            declareSession = "declare\n\t V_CD_PROCESSO number;\n";
+                        }
+                        queryProcess = "\t V_CD_PROCESSO := 0;\n\n";
+                        queryProcess += "\t /*Add get process*/\n";
+                        queryProcess += "\t select\t cd_processo\n";
+                        queryProcess += "\t into\t V_CD_PROCESSO\n";
+                        queryProcess += "\t from\t cfg_processo\n";
+                        queryProcess += "\t where\t upper(tip_processo) = upper('" + item.value["tipprocess"] + "');\n\n";
+                    }
+                    else {
+                        queryProcess = "";
+                    }
+                    queryProcedure += queryProcess;
+                    /*########################*/
+                    queryProcedure += "\t PR_SEG_INSERIR_FUNCAO_CONTROLE(";
+                    queryProcedure += " P_DCR_FUNCAO\t\t => '" + item.value["name"] + "', \n";
+                    queryProcedure += "\t\t\t\t\t\t\t\t\t P_ABREV_FUNCAO\t\t => '" + item.value["abbrev"] + "', \n";
+                    queryProcedure += "\t\t\t\t\t\t\t\t\t P_DCR_ID_CONTROLE\t => '" + item.value["idcontrol"] + "', \n";
+                    if (Boolean(item.value["tipprocess"])) {
+                        queryProcedure += "\t\t\t\t\t\t\t\t\t P_CD_PROCESSO\t\t => V_CD_PROCESSO \n";
+                    }
+                    queryProcedure += "\t\t\t\t\t\t\t\t\t);";
+                    queryProcedure += "\n\n";
+                    queryProcedure += "/*####################################################################################*/\n\n";
+                    isCreated = "S";
+                }
+                else {
+                    isCreated = "N";
+                }
+            }
+        }
+        catch (e_1_1) { e_1 = { error: e_1_1 }; }
+        finally {
+            try {
+                if (_c && !_c.done && (_a = _b.return)) _a.call(_b);
+            }
+            finally { if (e_1) throw e_1.error; }
+        }
+        query = declareSession + query + queryProcedure;
+        if (form.value["getcommit"]) {
+            query += "\t Commit;\n\n";
+        }
+        query += "End;";
+        if (isCreated == "S") {
+            this.scriptservice.setScript(query);
+        }
+        else {
+            this.cleanScript();
+        }
+    };
+    FunctioncontrolService.prototype.cleanScript = function () {
+        this.scriptservice.cleanScript();
+    };
+    FunctioncontrolService.ctorParameters = function () { return [
+        { type: _script_service__WEBPACK_IMPORTED_MODULE_2__["ScriptService"] }
+    ]; };
+    FunctioncontrolService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        })
+    ], FunctioncontrolService);
+    return FunctioncontrolService;
 }());
 
 
@@ -1971,14 +2214,14 @@ var PageService = /** @class */ (function () {
                         if (!Boolean(queryDeclare)) {
                             queryDeclare = "declare\n\t v_cont number := 0;\n";
                         }
-                        queryCheck += "\t /*Add check if page exists*/\n";
+                        queryCheck = "\t /*Add check if page exists*/\n";
                         queryCheck += "\t select\t count(*)\n";
-                        queryCheck += "\t into\t\t v_cont\n";
+                        queryCheck += "\t into\t v_cont\n";
                         queryCheck += "\t from\t seg_funcao\n";
                         queryCheck += "\t where\t lower(dcr_url) = lower('" + item.value["url"] + "');\n\n";
                         queryCheck += "\t if v_cont = 0 then\n\n";
-                        queryProcedure = queryCheck + queryProcedure;
                     }
+                    queryProcedure += queryCheck;
                     /*########################*/
                     queryProcedure += "\t\t /*Add page*/\n";
                     queryProcedure += "\t\t PR_SEG_INSERIR_FUNCAO(";
@@ -1995,9 +2238,9 @@ var PageService = /** @class */ (function () {
                     queryTranducao = "\t\t /*Add Translater*/\n";
                     for (var idx in languages) {
                         queryTranducao += "\t\t PR_ATUALIZA_SEG_FUNCAO_IDIOMA(";
-                        queryTranducao += "\t p_dcr_url\t\t\t=> '" + (!Boolean(item.value["url"]) ? "" : item.value["url"]) + "', \n";
+                        queryTranducao += "\t p_dcr_url\t\t\t\t=> '" + (!Boolean(item.value["url"]) ? "" : item.value["url"]) + "', \n";
                         queryTranducao += "\t\t\t\t\t\t\t\t\t\t p_dcr_namespace\t\t=> '" + item.value["namespace"] + "', \n";
-                        queryTranducao += "\t\t\t\t\t\t\t\t\t\t p_cd_language\t\t=> '" + languages[idx] + "', \n";
+                        queryTranducao += "\t\t\t\t\t\t\t\t\t\t p_cd_language\t\t\t=> '" + languages[idx] + "', \n";
                         switch (languages[idx].substr(0, 2)) {
                             case 'pt':
                                 queryTranducao += "\t\t\t\t\t\t\t\t\t\t p_dcr_funcao\t\t\t=> '" + item.value["portuguese"] + "', \n";
@@ -2013,7 +2256,7 @@ var PageService = /** @class */ (function () {
                                 queryTranducao += "\t\t\t\t\t\t\t\t\t\t p_dcr_funcao\t\t\t=> '" + item.value["name"] + "', \n";
                                 break;
                         }
-                        queryTranducao += "\t\t\t\t\t\t\t\t\t\t p_abrev_funcao\t\t=> '" + item.value["abbrev"] + "', \n";
+                        queryTranducao += "\t\t\t\t\t\t\t\t\t\t p_abrev_funcao\t\t\t=> '" + item.value["abbrev"] + "', \n";
                         queryTranducao += "\t\t\t\t\t\t\t\t\t\t p_flag_forcar_atualiz\t=> '" + item.value["force"] + "' \n";
                         queryTranducao += "\t\t\t\t\t\t\t\t\t\t);\n\n";
                     }

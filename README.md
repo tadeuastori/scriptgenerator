@@ -22,7 +22,7 @@ With some fields filled in, this project will generate all the necessary SQL cod
 | New Page                  |   [![Generic badge](https://img.shields.io/badge/DONE-SUCCESS.svg)]()
 | New Cube                  |   [![Generic badge](https://img.shields.io/badge/DONE-SUCCESS.svg)]()
 | Edit Existing Cube        |   [![Generic badge](https://img.shields.io/badge/DONE-SUCCESS.svg)]()
-| Control Function          |   [![Generic badge](https://img.shields.io/badge/IN_PROGRESS...-GREY.svg)]()
+| Control Function          |   [![Generic badge](https://img.shields.io/badge/DONE-SUCCESS.svg)]()
 
 ## Something's Coming soon...
 

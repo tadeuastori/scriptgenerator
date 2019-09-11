@@ -1,0 +1,118 @@
+<form [formGroup]="form">
+
+    <div class="card" id="formHeader">
+        <div class="card-body">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <button type="button" class="btn btn-success btn-sm" (click)="addFunctionControl()">
+                            <img alt="Add Parameter" title="Add Function Control" src="./assets/btn/btnAdd.png" />
+                            &nbsp; Add Function Control
+                        </button>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-check text-right">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1"
+                                            formControlName="getcommit" (change)="generateScript()">
+                                        <label class="custom-control-label" for="customCheck1">Set Commit?</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <br>
+
+
+    <div formArrayName="functioncontrol">
+        <div class="card" *ngFor="let functionControlItem of functionControlFormGroup.controls; let i = index;"
+            style="margin-bottom: 5px;">
+
+            <div [formGroupName]="i">
+                <div class="card-body">
+
+                    <div class="row mb-1">
+                        <div class="col-sm-8">
+                            <div class="input-group mb-1">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Name</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Name"
+                                    aria-describedby="basic-addon1" formControlName="name" (change)="generateScript()">
+                            </div>
+                            <small class="text-danger"
+                                *ngIf="getFunctionControlFormGroup(i).controls['name'].hasError('required')">
+                                Name is required! </small>&nbsp;
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group mb-1">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Abbreviation</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Abbrev"
+                                    aria-describedby="basic-addon1" formControlName="abbrev"
+                                    (change)="generateScript()">
+                            </div>
+                            <small class="text-danger"
+                                *ngIf="getFunctionControlFormGroup(i).controls['abbrev'].hasError('required')">
+                                Abbreviation is required! </small>&nbsp;
+                        </div>
+                    </div>
+
+                    <div class="row mb-1">
+                        <div class="col-sm-8">
+                            <div class="input-group mb-1">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Id Control</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="ID Control"
+                                    aria-describedby="basic-addon1" formControlName="idcontrol"
+                                    (change)="generateScript()">
+                            </div>
+                            <small class="text-danger"
+                                *ngIf="getFunctionControlFormGroup(i).controls['idcontrol'].hasError('required')">
+                                Id Control is required! </small>&nbsp;
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="input-group mb-1">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Process Type</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Process Type" maxlength="1"
+                                    aria-describedby="basic-addon1" formControlName="tipprocess"
+                                    (change)="generateScript()">
+                            </div>
+                            &nbsp;
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-right">
+                    <small class="text-muted">
+
+                        <button type="button" class="btn btn-danger btn-sm" (click)="removeFunctionControl(i)">
+                            <img alt="Remove Function Control" title="Remove Function Control"
+                                src="./assets/btn/btnRemove.png" />
+                            &nbsp; Remove Function Control
+                        </button>
+
+                    </small>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+</form>
