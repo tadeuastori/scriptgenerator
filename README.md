@@ -24,12 +24,18 @@ With some fields filled in, this project will generate all the necessary SQL cod
 | Edit Existing Cube        |   [![Generic badge](https://img.shields.io/badge/DONE-SUCCESS.svg)]()
 | Control Function          |   [![Generic badge](https://img.shields.io/badge/DONE-SUCCESS.svg)]()
 
+## Some Automations
+
+| Automatization                |   Status
+| :------------------------     |   -------------------------:
+| Key import process            |   [![Generic badge](https://img.shields.io/badge/DONE-SUCCESS.svg)]()
+| Accepting suggestions... :)                                   |   
+
 ## Something's Coming soon...
 
 | Features                                                      |   Status
 | :------------------------------------------------------------ |   -------------------------:
 | Key translated automatization with Google Translator API      |   [![Generic badge](https://img.shields.io/badge/COMING_SOON-ORANGE.svg)]()
-| Key import process      |   [![Generic badge](https://img.shields.io/badge/COMING_SOON-ORANGE.svg)]()
 | Accepting suggestions... :)                                   |   
 
 ## Used Technology...

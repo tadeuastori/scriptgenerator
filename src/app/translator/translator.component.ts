@@ -13,7 +13,7 @@ import { DOCUMENT } from '@angular/common';
 })
 export class TranslatorComponent implements OnInit {
   public form: FormGroup;
-  public translateList: FormArray;  
+  public translateList: FormArray;
 
   constructor(
     private appcomponent: AppComponent,
@@ -27,6 +27,7 @@ export class TranslatorComponent implements OnInit {
   generatorList = this.generatorservice.getGenerator("/translator");
   getCommit: boolean = true;
   getBeginEnd: boolean = true;
+  pasteKeyScript: string = '';
 
   ngOnInit() {
     this.appcomponent.pageTitle = this.generatorList.name;
@@ -46,13 +47,13 @@ export class TranslatorComponent implements OnInit {
     s.src = './assets/script/scripts.js';
     this.renderer2.appendChild(this._document.body, s);
 
-    this.appcomponent.cdrMethod();    
+    this.appcomponent.cdrMethod();
   }
 
 
   //#########################################################################################
 
-  createTranslateKey(): FormGroup{
+  createTranslateKey(): FormGroup {
     return this.fb.group({
       key: [null, Validators.compose([Validators.required])],
       force: [true, Validators.compose([Validators.required])],
@@ -67,27 +68,56 @@ export class TranslatorComponent implements OnInit {
     return this.form.get('translateKeys') as FormArray;
   }
 
-  addTranslatorKey(){
+  addTranslatorKey() {
     this.translateList.push(this.createTranslateKey());
     this.generateScript();
   }
 
-  removeTranslateKey(index){
+  removeTranslateKey(index) {
     if (confirm("Are you sure to delete this " + this.generatorList.name + "?")) {
       this.translateList.removeAt(index);
       this.generateScript();
     }
-  }  
+  }
 
   getTranslateFormGroup(index): FormGroup {
     const formGroup = this.translateList.controls[index] as FormGroup;
     return formGroup;
   }
 
-//#########################################################################################
 
-  generateScript(){
+  addMultiKeys() {
+
+    var key;
+    var arrayKey: Array<string> = this.pasteKeyScript.split("\n");
+
+    for (var index in arrayKey) {
+
+      if(Boolean(arrayKey[index])){
+
+        key = this.fb.group({
+          key: [arrayKey[index], Validators.compose([Validators.required])],
+          force: [true, Validators.compose([Validators.required])],
+          portuguese: [null, Validators.compose([Validators.required])],
+          english: [null, Validators.compose([Validators.required])],
+          spanish: [null, Validators.compose([Validators.required])]
+        });
+  
+        this.translateList.push(key);
+      }
+      
+    }
+
+    this.generateScript();
+    this.pasteKeyScript = "";
+  }
+
+
+
+  //#########################################################################################
+
+  generateScript() {
     this.translatorservice.generateScript(this.form, this.translateList);
   }
-  
+
 }
