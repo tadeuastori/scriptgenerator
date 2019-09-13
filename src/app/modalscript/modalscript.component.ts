@@ -40,7 +40,7 @@ export class ModalscriptComponent implements OnInit {
 
   copyGeneratedScript(): void {
     if(this.navActive == "1"){
-      this.exportService.copyGeneratedScript(this.generatedScript, "divConteudo", "generatedScript");
+      this.exportService.copyGeneratedScript(this.generatedScript, "divConteudoGenerated", "generatedScript");
       this.copyMessage = this.exportService.setMessageCopyClipBoard();
     } else {
       this.exportService.copyGeneratedScript(this.alternativeGeneratedScript, "divConteudoAlternativo", "alternativeGeneratedScript");

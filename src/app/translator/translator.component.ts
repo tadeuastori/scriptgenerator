@@ -93,14 +93,16 @@ export class TranslatorComponent implements OnInit {
 
     for (var index in arrayKey) {
 
-      if(Boolean(arrayKey[index])){
+      var arrayField: Array<string> = arrayKey[index].split(";");      
+
+      if(Boolean(arrayKey[index])){    
 
         key = this.fb.group({
-          key: [arrayKey[index], Validators.compose([Validators.required])],
+          key: [(Boolean(arrayField[0]) ? arrayField[0] : null), Validators.compose([Validators.required])],
           force: [true, Validators.compose([Validators.required])],
-          portuguese: [null, Validators.compose([Validators.required])],
-          english: [null, Validators.compose([Validators.required])],
-          spanish: [null, Validators.compose([Validators.required])]
+          portuguese: [(Boolean(arrayField[1]) ? arrayField[1] : null), Validators.compose([Validators.required])],
+          english: [(Boolean(arrayField[2]) ? arrayField[2] : null), Validators.compose([Validators.required])],
+          spanish: [(Boolean(arrayField[3]) ? arrayField[3] : null), Validators.compose([Validators.required])]
         });
   
         this.translateList.push(key);

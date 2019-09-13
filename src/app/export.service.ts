@@ -40,6 +40,7 @@ export class ExportService {
     selBox.style.top = '0';
     selBox.style.opacity = '0';
     selBox.value = this.generatedScript;
+    selBox.id = this.generateFileName();
 
     var divAtual = document.getElementById(div);
     var divText = document.getElementById(aba);
