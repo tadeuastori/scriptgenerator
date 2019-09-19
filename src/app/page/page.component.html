@@ -199,7 +199,7 @@
                     </div>
 
                     <div class="row mb-1">
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">
@@ -215,20 +215,6 @@
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">
-                                        <input type="checkbox" aria-label="Checkbox for following text input" [readonly]="getPageFormGroup(i).controls['url'].value"
-                                            formControlName="blockpage" (change)="generateScript()">
-                                    </div>
-                                </div>
-                                <label class="form-control" aria-label="label with checkbox" readonly>Block page in
-                                    other customers?</label>&nbsp;
-                            </div>
-                            <small class="text-danger" *ngIf="!getPageFormGroup(i).controls['url'].value">
-                                URL is required! </small>&nbsp;
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
                                         <input type="checkbox" aria-label="Checkbox for following text input"
                                             formControlName="exists" (change)="generateScript()">
                                     </div>
@@ -237,8 +223,20 @@
                                     exists?</label>&nbsp;
                             </div>
                         </div>
+                        <div class="col-sm-5">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <input type="checkbox" aria-label="Checkbox for following text input" [readonly]="getPageFormGroup(i).controls['url'].value"
+                                            formControlName="blockpage" (change)="generateScript()">
+                                    </div>
+                                </div>
+                                <label class="form-control" aria-label="label with checkbox" readonly>Create the script as a blocked page?</label>&nbsp;
+                            </div>
+                            <small class="text-danger" *ngIf="!getPageFormGroup(i).controls['url'].value">
+                                URL is required! </small>&nbsp;
+                        </div>                        
                     </div>
-
                 </div>
                 <div class="card-footer text-right">
                     <small class="text-muted">

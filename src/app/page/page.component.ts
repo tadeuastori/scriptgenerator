@@ -52,7 +52,7 @@ export class PageComponent implements OnInit {
     return this.fb.group({
       name: [null, Validators.compose([Validators.required])],
       url: [null],
-      icon: [null],
+      icon: ["UIEgf/Images/vazio.gif"],
       abbrev: [null, Validators.compose([Validators.required])],
       namespace: [null, Validators.compose([Validators.required])],
       ismenu: ["S"],

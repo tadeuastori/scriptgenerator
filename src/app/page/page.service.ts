@@ -95,6 +95,13 @@ export class PageService implements ScriptInterface {
 
         queryProcedure += queryTranducao;
 
+        if (Boolean(item.value["blockpage"]) && Boolean(item.value["url"])) {
+
+          queryProcedure += "\t\t /*Create the page as blocked status*/\n"
+          queryProcedure += this.createScriptPageStatus('S', item.value["url"], item.value["name"]);
+
+        }
+
         /*########################*/
         if (Boolean(item.value["exists"])){
           queryProcedure += "\t end if;\n\n";
@@ -105,12 +112,9 @@ export class PageService implements ScriptInterface {
         
 
         if (Boolean(item.value["blockpage"]) && Boolean(item.value["url"])) {
-          if (!Boolean(queryAlternativeValue)) { queryAlternativeValue = "\t /*Cria queries para aplicar em outros clientes*/\n" }
+          if (!Boolean(queryAlternativeValue)) { queryAlternativeValue = "\t\t /*Create a script to unblock the page*/\n" }
 
-          queryAlternativeValue += "\t update\t seg_funcao\n";
-          queryAlternativeValue += "\t set\t\t flag_bloqueio = 'S'\n";
-          queryAlternativeValue += "\t where\t lower(dcr_url) = lower('" + item.value["url"] + "')\n";
-          queryAlternativeValue += "\t and\t\t lower(dcr_funcao) = lower('" + item.value["name"] + "');\n\n";
+          queryAlternativeValue += this.createScriptPageStatus('N', item.value["url"], item.value["name"]);
         }
 
         isCreated = "S";
@@ -149,4 +153,17 @@ export class PageService implements ScriptInterface {
   cleanScript() {
     this.scriptservice.cleanScript();
   }
+
+  createScriptPageStatus(flagBlock, url, name): string {
+
+    var query = "";
+
+    query += "\t\t update\t seg_funcao\n";
+    query += "\t\t set\t\t flag_bloqueio = '"+flagBlock+"'\n";
+    query += "\t\t where\t lower(dcr_url) = lower('" + url + "')\n";
+    query += "\t\t and\t\t lower(dcr_funcao) = lower('" + name + "');\n\n";
+
+    return query;
+  }
+
 }

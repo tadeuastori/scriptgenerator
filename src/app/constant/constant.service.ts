@@ -94,9 +94,9 @@ export class ConstantService implements ScriptInterface {
 
     if (declareSession != '') { query += "Declare\n\n" + declareSession.slice(0, -1) + " number; " + "\n\n"; }
 
-    query += "Begin\n\n" + querySelect + "\n" + queryProcedure + "\n" + queryUpdate + "\n";
+    query += "Begin\n\n" + this.returnBlockException(querySelect) + "\n" + queryProcedure + "\n" + queryUpdate + "\n";
 
-    if (form.value["getcommit"]) { query += "\t Commit;\n\n"; }
+    if (form.value["getcommit"]) { query += "\t Commit;\n\n"; } 
 
     query += "End;";
 
@@ -106,6 +106,29 @@ export class ConstantService implements ScriptInterface {
 
   cleanScript() {
     this.scriptservice.cleanScript();
+  }
+
+  returnBlockException(script): string{
+
+    var query = "";
+
+    if (Boolean(script)){
+      query += "\t begin\n";
+      query += "\n";
+  
+      query += " " + script;
+  
+      query += "\t exception\n";
+      query += "\t\t when too_many_rows then\n";
+      query += "\t\t\t raise_application_error(-20001,'Too many rows from select. Check it please!');\n";
+      query += "\t\t when no_data_found then\n";
+      query += "\t\t\t raise_application_error(-20001,'No data found from select. Check it please!');\n";
+      query += "\t\t when others then\n";
+      query += "\t\t\t raise_application_error(-20001,'There is something wrong from select. Check it please!');\n";
+      query += "\t end;\n";
+    }    
+
+    return query;
   }
 
 }
