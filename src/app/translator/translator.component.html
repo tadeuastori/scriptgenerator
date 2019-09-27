@@ -17,7 +17,7 @@
                             Paste Keys
                         </button>
                     </div>
-                    <div class="col-sm">
+                    <div class="col">
                         <div class="form-check text-right">
                             <div class="row">
                                 <div class="col-sm">
@@ -37,7 +37,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -94,6 +93,9 @@
                                 *ngIf="getTranslateFormGroup(i).controls['portuguese'].hasError('required')">
                                 Portuguese translate is required! </small>&nbsp;
                         </div>
+                    </div>
+
+                    <div class="row mb-1">
                         <div class="col-sm">
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -107,6 +109,9 @@
                                 *ngIf="getTranslateFormGroup(i).controls['english'].hasError('required')">
                                 English translate is required! </small>&nbsp;
                         </div>
+                    </div>
+
+                    <div class="row mb-1">
                         <div class="col-sm">
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -122,20 +127,20 @@
                         </div>
                     </div>
 
-                </div>
-                <div class="card-footer text-right">
-                    <small class="text-muted">
-
-                        <button type="button" class="btn btn-danger btn-sm" (click)="removeTranslateKey(i)">
-                            <img alt="Remove Key" title="Remove Key" src="./assets/btn/btnRemove.png" />
-                            &nbsp; Remove Key
-                        </button>
-
-                    </small>
-                </div>
             </div>
+            <div class="card-footer text-right">
+                <small class="text-muted">
 
+                    <button type="button" class="btn btn-danger btn-sm" (click)="removeTranslateKey(i)">
+                        <img alt="Remove Key" title="Remove Key" src="./assets/btn/btnRemove.png" />
+                        &nbsp; Remove Key
+                    </button>
+
+                </small>
+            </div>
         </div>
+
+    </div>
     </div>
 
 </form>
@@ -154,8 +159,8 @@
 
             <div class="modal-body" style="background-color: #E9ECEF;">
                 <div id="divConteudo" style="text-align: center; ">
-                    <textarea type="text" id="pasteKeyScript" [(ngModel)]="pasteKeyScript" class="keyArea" 
-                    placeholder="Insert one key per line &#x0a;&#x0a;Example:&#x0a;Key; Portuguese; English; Spanish&#x0a;&#x0a;> Key: Mandatory &#x0a;> Translate: Optional"></textarea>
+                    <textarea type="text" id="pasteKeyScript" [(ngModel)]="pasteKeyScript" class="keyArea"
+                        placeholder="Insert one key per line &#x0a;&#x0a;Example:&#x0a;Key; Portuguese; English; Spanish&#x0a;&#x0a;> Key: Mandatory &#x0a;> Translate: Optional"></textarea>
                 </div>
             </div>
 
@@ -165,7 +170,8 @@
                         <div class="col">
                         </div>
                         <div class="col text-right popupControlBox">
-                            <button type="button" class="btn btn-info" (click)="addMultiKeys()" data-dismiss="modal" style="filter: invert(100%);"> 
+                            <button type="button" class="btn btn-info" (click)="addMultiKeys()" data-dismiss="modal"
+                                style="filter: invert(100%);">
                                 <img alt="Add Keys" title="Add Keys" src="./assets/btn/btnAddMult.png" />
                                 Add Keys
                             </button>
