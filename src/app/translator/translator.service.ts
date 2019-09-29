@@ -17,35 +17,70 @@ export class TranslatorService implements ScriptInterface {
     var query = "";
     var isForce = "S";
     var isCreated = "N";
+    var countLoop = 0;
 
     if (form.value["getbeginend"]) { query += "Begin\n\n"; }
 
     for (let item of translateList.controls) {
+      
+      countLoop++;
 
-      if (Boolean(item.value["key"]) &&
-        Boolean(item.value["portuguese"]) &&
-        Boolean(item.value["english"]) &&
-        Boolean(item.value["spanish"])) {
+      if (Boolean(item.value["key"])) {
 
-        if (item.value["force"]) { isForce = "S"; }
-        else { isForce = "N"; }
+        if (form.value["typeScript"]) {
 
-        query += "\tPR_ATUALIZA_INT_MESSAGE('pt-BR', '" + item.value["key"] + "', '" + item.value["portuguese"] + "', '" + isForce + "'); \n";
-        query += "\tPR_ATUALIZA_INT_MESSAGE('pt-PT', '" + item.value["key"] + "', '" + item.value["portuguese"] + "', '" + isForce + "'); \n";
-        query += "\tPR_ATUALIZA_INT_MESSAGE('en-GB', '" + item.value["key"] + "', '" + item.value["english"] + "', '" + isForce + "'); \n";
-        query += "\tPR_ATUALIZA_INT_MESSAGE('en-US', '" + item.value["key"] + "', '" + item.value["english"] + "', '" + isForce + "'); \n";
-        query += "\tPR_ATUALIZA_INT_MESSAGE('zh-CN', '" + item.value["key"] + "', '" + item.value["english"] + "', '" + isForce + "'); \n";
-        query += "\tPR_ATUALIZA_INT_MESSAGE('es-UY', '" + item.value["key"] + "', '" + item.value["spanish"] + "', '" + isForce + "'); \n";
-        query += "\n";
+          if(Boolean(item.value["portuguese"]) &&
+             Boolean(item.value["english"]) &&
+             Boolean(item.value["spanish"])) {
 
+              if (item.value["force"]) { isForce = "S"; }
+              else { isForce = "N"; }
+    
+              query += "\tPR_ATUALIZA_INT_MESSAGE('pt-BR', '" + item.value["key"] + "', '" + item.value["portuguese"] + "', '" + isForce + "'); \n";
+              query += "\tPR_ATUALIZA_INT_MESSAGE('pt-PT', '" + item.value["key"] + "', '" + item.value["portuguese"] + "', '" + isForce + "'); \n";
+              query += "\tPR_ATUALIZA_INT_MESSAGE('en-GB', '" + item.value["key"] + "', '" + item.value["english"] + "', '" + isForce + "'); \n";
+              query += "\tPR_ATUALIZA_INT_MESSAGE('en-US', '" + item.value["key"] + "', '" + item.value["english"] + "', '" + isForce + "'); \n";
+              query += "\tPR_ATUALIZA_INT_MESSAGE('zh-CN', '" + item.value["key"] + "', '" + item.value["english"] + "', '" + isForce + "'); \n";
+              query += "\tPR_ATUALIZA_INT_MESSAGE('es-UY', '" + item.value["key"] + "', '" + item.value["spanish"] + "', '" + isForce + "'); \n";
+              query += "\n";
 
-        isCreated = "S";
+              isCreated = "S";
+    
+             } else {
+              query += "\t/** The key '" + item.value["key"] + "' has no a mandatory requirement to make the script. **/\n\n";
+             }
+
+        } else {
+
+          if (Boolean(item.value["portuguese"])) {
+            query += "\tPR_ATUALIZA_INT_MESSAGE('pt-BR', '" + item.value["key"] + "', '" + item.value["portuguese"] + "'); \n";
+            query += "\tPR_ATUALIZA_INT_MESSAGE('pt-PT', '" + item.value["key"] + "', '" + item.value["portuguese"] + "'); \n";
+            isCreated = "S";
+          }
+
+          if (Boolean(item.value["english"])) {
+            query += "\tPR_ATUALIZA_INT_MESSAGE('en-GB', '" + item.value["key"] + "', '" + item.value["english"] + "'); \n";
+            query += "\tPR_ATUALIZA_INT_MESSAGE('en-US', '" + item.value["key"] + "', '" + item.value["english"] + "'); \n";
+            query += "\tPR_ATUALIZA_INT_MESSAGE('zh-CN', '" + item.value["key"] + "', '" + item.value["english"] + "'); \n";
+            isCreated = "S";
+          }
+
+          if (Boolean(item.value["spanish"])) {
+            query += "\tPR_ATUALIZA_INT_MESSAGE('es-UY', '" + item.value["key"] + "', '" + item.value["spanish"] + "'); \n";
+            isCreated = "S";
+          }
+
+          query += "\n";
+
+        }
+        
       }
       else {
-        isCreated = "N";
+        query += "\t/** The translate in position [" + countLoop + "] has no KEY to make the script. **/\n\n";
       }
 
     }
+
 
     if (form.value["getcommit"]) { query += "\tCommit;\n\n"; }
 

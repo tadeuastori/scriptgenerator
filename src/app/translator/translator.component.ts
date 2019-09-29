@@ -28,6 +28,7 @@ export class TranslatorComponent implements OnInit {
   getCommit: boolean = true;
   getBeginEnd: boolean = true;
   pasteKeyScript: string = '';
+  labelSwitch: string = 'Standard Script';
 
   ngOnInit() {
     this.appcomponent.pageTitle = this.generatorList.name;
@@ -37,6 +38,7 @@ export class TranslatorComponent implements OnInit {
     this.form = this.fb.group({
       getcommit: [true],
       getbeginend: [true],
+      typeScript: [true],
       translateKeys: this.fb.array([this.createTranslateKey()])
     });
 
@@ -88,14 +90,30 @@ export class TranslatorComponent implements OnInit {
 
   addMultiKeys() {
 
+    var countLoop = 0;
+
+    for (let item of this.translateList.controls){
+
+      if (!Boolean(item.value["key"])){
+
+        if (confirm("The position ["+countLoop+"] has no KEY. Are you sure to delete this " + this.generatorList.name + "?")) {
+          this.translateList.removeAt(countLoop);
+          this.generateScript();
+        }
+
+      }
+      
+      countLoop++;
+    }
+
     var key;
     var arrayKey: Array<string> = this.pasteKeyScript.split("\n");
 
     for (var index in arrayKey) {
 
-      var arrayField: Array<string> = arrayKey[index].split(";");      
+      var arrayField: Array<string> = arrayKey[index].split(";");
 
-      if(Boolean(arrayKey[index])){    
+      if (Boolean(arrayKey[index])) {
 
         key = this.fb.group({
           key: [(Boolean(arrayField[0]) ? arrayField[0] : null), Validators.compose([Validators.required])],
@@ -104,10 +122,10 @@ export class TranslatorComponent implements OnInit {
           english: [(Boolean(arrayField[2]) ? arrayField[2] : null), Validators.compose([Validators.required])],
           spanish: [(Boolean(arrayField[3]) ? arrayField[3] : null), Validators.compose([Validators.required])]
         });
-  
+
         this.translateList.push(key);
       }
-      
+
     }
 
     this.generateScript();
@@ -121,5 +139,32 @@ export class TranslatorComponent implements OnInit {
   generateScript() {
     this.translatorservice.generateScript(this.form, this.translateList);
   }
+
+  switchScript() {
+
+    if (this.labelSwitch == 'Standard Script') {
+      this.labelSwitch = 'Enterprise Script'
+    } else {
+      this.labelSwitch = 'Standard Script'
+    }
+
+  }
+
+  checkTypeScript(index): boolean {
+
+    var vlrReturn = this.form.controls['typeScript'].value;
+
+    if(!vlrReturn){
+
+      vlrReturn = !(Boolean(this.getTranslateFormGroup(index).controls['portuguese'].value) ||
+                   Boolean(this.getTranslateFormGroup(index).controls['english'].value) ||
+                   Boolean(this.getTranslateFormGroup(index).controls['spanish'].value));
+
+
+    }
+
+    return vlrReturn;
+  }
+
 
 }
