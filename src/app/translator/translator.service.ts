@@ -52,7 +52,7 @@ export class TranslatorService implements ScriptInterface {
             isCreated = "S";
 
           } else {
-            query += "\t/** The key '" + item.value["key"] + "' has no a mandatory requirement to make the script. **/\n\n";
+            query += "\t/** The key '" + item.value["key"] + "' has no mandatory requirements to generate the script. **/\n\n";
           }
 
         } else {
@@ -75,13 +75,19 @@ export class TranslatorService implements ScriptInterface {
             isCreated = "S";
           }
 
+          if ((!Boolean(item.value["portuguese"]) &&
+               !Boolean(item.value["english"]) &&
+               !Boolean(item.value["spanish"]))) {
+            query += "\t/** The key '" + item.value["key"] + "' has no mandatory requirements to generate the script. **/\n\n";
+          }
+
           query += "\n";
 
         }
 
       }
       else {
-        query += "\t/** The translate in position [" + countLoop + "] has no KEY to make the script. **/\n\n";
+        query += "\t/** The translate in position [" + countLoop + "] has no KEY to generate the script. **/\n\n";
       }
 
     }
@@ -92,8 +98,6 @@ export class TranslatorService implements ScriptInterface {
     if (form.value["getbeginend"]) { query += "End;"; }
 
     this.scriptservice.setScript(query);
-    // if (isCreated == "S") { this.scriptservice.setScript(query); }
-    // else { this.cleanScript(); }
   }
 
   cleanScript() {

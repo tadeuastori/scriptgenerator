@@ -2874,7 +2874,7 @@ var TranslatorService = /** @class */ (function () {
                             isCreated = "S";
                         }
                         else {
-                            query += "\t/** The key '" + item.value["key"] + "' has no a mandatory requirement to make the script. **/\n\n";
+                            query += "\t/** The key '" + item.value["key"] + "' has no mandatory requirements to generate the script. **/\n\n";
                         }
                     }
                     else {
@@ -2893,11 +2893,16 @@ var TranslatorService = /** @class */ (function () {
                             query += "\tPR_ATUALIZA_INT_MESSAGE('es-UY', '" + item.value["key"] + "', '" + item.value["spanish"] + "'); \n";
                             isCreated = "S";
                         }
+                        if ((!Boolean(item.value["portuguese"]) &&
+                            !Boolean(item.value["english"]) &&
+                            !Boolean(item.value["spanish"]))) {
+                            query += "\t/** The key '" + item.value["key"] + "' has no mandatory requirements to generate the script. **/\n\n";
+                        }
                         query += "\n";
                     }
                 }
                 else {
-                    query += "\t/** The translate in position [" + countLoop + "] has no KEY to make the script. **/\n\n";
+                    query += "\t/** The translate in position [" + countLoop + "] has no KEY to generate the script. **/\n\n";
                 }
             }
         }
@@ -2915,8 +2920,6 @@ var TranslatorService = /** @class */ (function () {
             query += "End;";
         }
         this.scriptservice.setScript(query);
-        // if (isCreated == "S") { this.scriptservice.setScript(query); }
-        // else { this.cleanScript(); }
     };
     TranslatorService.prototype.cleanScript = function () {
         this.scriptservice.cleanScript();
