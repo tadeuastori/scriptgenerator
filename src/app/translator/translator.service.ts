@@ -13,6 +13,11 @@ export class TranslatorService implements ScriptInterface {
   ) { }
 
   generateScript(form: FormGroup, translateList: FormArray) {
+    
+    if(translateList.controls.length == 0){
+      this.cleanScript();
+      return;
+    }
 
     var query = "";
     var isForce = "S";
@@ -22,33 +27,33 @@ export class TranslatorService implements ScriptInterface {
     if (form.value["getbeginend"]) { query += "Begin\n\n"; }
 
     for (let item of translateList.controls) {
-      
+
       countLoop++;
 
       if (Boolean(item.value["key"])) {
 
         if (form.value["typeScript"]) {
 
-          if(Boolean(item.value["portuguese"]) &&
-             Boolean(item.value["english"]) &&
-             Boolean(item.value["spanish"])) {
+          if (Boolean(item.value["portuguese"]) &&
+            Boolean(item.value["english"]) &&
+            Boolean(item.value["spanish"])) {
 
-              if (item.value["force"]) { isForce = "S"; }
-              else { isForce = "N"; }
-    
-              query += "\tPR_ATUALIZA_INT_MESSAGE('pt-BR', '" + item.value["key"] + "', '" + item.value["portuguese"] + "', '" + isForce + "'); \n";
-              query += "\tPR_ATUALIZA_INT_MESSAGE('pt-PT', '" + item.value["key"] + "', '" + item.value["portuguese"] + "', '" + isForce + "'); \n";
-              query += "\tPR_ATUALIZA_INT_MESSAGE('en-GB', '" + item.value["key"] + "', '" + item.value["english"] + "', '" + isForce + "'); \n";
-              query += "\tPR_ATUALIZA_INT_MESSAGE('en-US', '" + item.value["key"] + "', '" + item.value["english"] + "', '" + isForce + "'); \n";
-              query += "\tPR_ATUALIZA_INT_MESSAGE('zh-CN', '" + item.value["key"] + "', '" + item.value["english"] + "', '" + isForce + "'); \n";
-              query += "\tPR_ATUALIZA_INT_MESSAGE('es-UY', '" + item.value["key"] + "', '" + item.value["spanish"] + "', '" + isForce + "'); \n";
-              query += "\n";
+            if (item.value["force"]) { isForce = "S"; }
+            else { isForce = "N"; }
 
-              isCreated = "S";
-    
-             } else {
-              query += "\t/** The key '" + item.value["key"] + "' has no a mandatory requirement to make the script. **/\n\n";
-             }
+            query += "\tPR_ATUALIZA_INT_MESSAGE('pt-BR', '" + item.value["key"] + "', '" + item.value["portuguese"] + "', '" + isForce + "'); \n";
+            query += "\tPR_ATUALIZA_INT_MESSAGE('pt-PT', '" + item.value["key"] + "', '" + item.value["portuguese"] + "', '" + isForce + "'); \n";
+            query += "\tPR_ATUALIZA_INT_MESSAGE('en-GB', '" + item.value["key"] + "', '" + item.value["english"] + "', '" + isForce + "'); \n";
+            query += "\tPR_ATUALIZA_INT_MESSAGE('en-US', '" + item.value["key"] + "', '" + item.value["english"] + "', '" + isForce + "'); \n";
+            query += "\tPR_ATUALIZA_INT_MESSAGE('zh-CN', '" + item.value["key"] + "', '" + item.value["english"] + "', '" + isForce + "'); \n";
+            query += "\tPR_ATUALIZA_INT_MESSAGE('es-UY', '" + item.value["key"] + "', '" + item.value["spanish"] + "', '" + isForce + "'); \n";
+            query += "\n";
+
+            isCreated = "S";
+
+          } else {
+            query += "\t/** The key '" + item.value["key"] + "' has no a mandatory requirement to make the script. **/\n\n";
+          }
 
         } else {
 
@@ -73,7 +78,7 @@ export class TranslatorService implements ScriptInterface {
           query += "\n";
 
         }
-        
+
       }
       else {
         query += "\t/** The translate in position [" + countLoop + "] has no KEY to make the script. **/\n\n";
@@ -86,8 +91,9 @@ export class TranslatorService implements ScriptInterface {
 
     if (form.value["getbeginend"]) { query += "End;"; }
 
-    if (isCreated == "S") { this.scriptservice.setScript(query); }
-    else { this.cleanScript(); }
+    this.scriptservice.setScript(query);
+    // if (isCreated == "S") { this.scriptservice.setScript(query); }
+    // else { this.cleanScript(); }
   }
 
   cleanScript() {

@@ -2838,6 +2838,10 @@ var TranslatorService = /** @class */ (function () {
     }
     TranslatorService.prototype.generateScript = function (form, translateList) {
         var e_1, _a;
+        if (translateList.controls.length == 0) {
+            this.cleanScript();
+            return;
+        }
         var query = "";
         var isForce = "S";
         var isCreated = "N";
@@ -2910,12 +2914,9 @@ var TranslatorService = /** @class */ (function () {
         if (form.value["getbeginend"]) {
             query += "End;";
         }
-        if (isCreated == "S") {
-            this.scriptservice.setScript(query);
-        }
-        else {
-            this.cleanScript();
-        }
+        this.scriptservice.setScript(query);
+        // if (isCreated == "S") { this.scriptservice.setScript(query); }
+        // else { this.cleanScript(); }
     };
     TranslatorService.prototype.cleanScript = function () {
         this.scriptservice.cleanScript();

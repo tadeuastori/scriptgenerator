@@ -2692,6 +2692,10 @@ let TranslatorService = class TranslatorService {
         this.scriptservice = scriptservice;
     }
     generateScript(form, translateList) {
+        if (translateList.controls.length == 0) {
+            this.cleanScript();
+            return;
+        }
         var query = "";
         var isForce = "S";
         var isCreated = "N";
@@ -2754,12 +2758,9 @@ let TranslatorService = class TranslatorService {
         if (form.value["getbeginend"]) {
             query += "End;";
         }
-        if (isCreated == "S") {
-            this.scriptservice.setScript(query);
-        }
-        else {
-            this.cleanScript();
-        }
+        this.scriptservice.setScript(query);
+        // if (isCreated == "S") { this.scriptservice.setScript(query); }
+        // else { this.cleanScript(); }
     }
     cleanScript() {
         this.scriptservice.cleanScript();
