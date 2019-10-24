@@ -90,12 +90,12 @@ export class NewcubeService implements ScriptInterface {
     queryDeclare += "/*Deixar em branco caso queira adicionar ao fim do cubo*/\n";
     queryDeclare += "\t var_ColunaAnterior t_Anterior := t_Anterior(" + listColumnPrevious.slice(0, -1) + ");\n";
     queryDeclare += "/*Formato(s) do(s) campo(s) novo(s)*/\n";
-    queryDeclare += "\t var_NovoFormato t_Formato := t_Formato(" + listColumnFormat.slice(0, -1) + ")\n";
+    queryDeclare += "\t var_NovoFormato t_Formato := t_Formato(" + listColumnFormat.slice(0, -1) + ");\n";
     queryDeclare += "/*Tradução(ões) do(s) campo(s) novo(s)*/\n";
-    queryDeclare += "\t var_NovaTraducaoPt t_Traducao := t_Traducao(" + listColumnPort.slice(0, -1) + ")\n";
-    queryDeclare += "\t var_NovaTraducaoEs t_Traducao := t_Traducao(" + listColumnSpan.slice(0, -1) + ")\n";
-    queryDeclare += "\t var_NovaTraducaoEn t_Traducao := t_Traducao(" + listColumnEngl.slice(0, -1) + ")\n";
-    queryDeclare += "\t var_NovaTraducaoZh t_Traducao := t_Traducao(" + listColumnEngl.slice(0, -1) + ")\n";
+    queryDeclare += "\t var_NovaTraducaoPt t_Traducao := t_Traducao(" + listColumnPort.slice(0, -1) + ");\n";
+    queryDeclare += "\t var_NovaTraducaoEs t_Traducao := t_Traducao(" + listColumnSpan.slice(0, -1) + ");\n";
+    queryDeclare += "\t var_NovaTraducaoEn t_Traducao := t_Traducao(" + listColumnEngl.slice(0, -1) + ");\n";
+    queryDeclare += "\t var_NovaTraducaoZh t_Traducao := t_Traducao(" + listColumnEngl.slice(0, -1) + ");\n";
     queryDeclare += "/*### SE PRECISAR ADICIONAR OUTRO IDIOMA QUE NÃO ESTEJA AQUI, DEVE SER CRIADO UM NOVO CURSOR E ADICIONAR ELE NO LOOP NO FINAL DO SCRIPT ###*/ \n";
     queryDeclare += "\n";
     queryDeclare += "/*Variável para controle da visão*/\n";
@@ -236,7 +236,7 @@ export class NewcubeService implements ScriptInterface {
     queryProcedure += "\t\t UPDATE  ADM_CAMPO_RELATORIO\n";
     queryProcedure += "\t\t SET 	NUM_SEQUENCIA =	decode(var_ColunaAnterior(i), '',\n";
     queryProcedure += "\t\t\t\t\t (\n";
-    queryProcedure += "\t\t\t\t\t  SELECT 	max(CR.NUM_SEQUENCIA) +\n"; 1
+    queryProcedure += "\t\t\t\t\t  SELECT 	max(CR.NUM_SEQUENCIA) + 1\n";
     queryProcedure += "\t\t\t\t\t  FROM 		ADM_RELATORIO R\n";
     queryProcedure += "\t\t\t\t\t  INNER JOIN 	CON_VISAO V 			ON V.CD_VISAO = R.CD_VISAO\n";
     queryProcedure += "\t\t\t\t\t  INNER JOIN 	CON_COLUNA_VISAO CV 	ON V.CD_VISAO = R.CD_VISAO\n";
