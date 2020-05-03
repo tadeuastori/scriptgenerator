@@ -55,8 +55,8 @@ export class EditcubeService implements ScriptInterface {
         listColumnName += "'" + item.value["columnname"] + "',";
         listColumnFormat += "'" + item.value["format"] + "',";
         listColumnPort += "'" + item.value["portuguese"] + "',";
-        listColumnEngl += "'" + item.value["spanish"] + "',";
-        listColumnSpan += "'" + item.value["english"] + "',";
+        listColumnEngl += "'" + item.value["english"] + "',";
+        listColumnSpan += "'" + item.value["spanish"] + "',";
         listColumnPrevious += "'" + (!Boolean(item.value["columnbefore"]) ? "" : item.value["columnbefore"]) + "',";
 
         isCreated = "S";
@@ -75,10 +75,10 @@ export class EditcubeService implements ScriptInterface {
     queryDeclare += "/*Formato(s) do(s) campo(s) novo(s)*/\n";
     queryDeclare += "\t var_NovoFormato t_Formato := t_Formato(" + listColumnFormat.slice(0, -1) + ")\n";
     queryDeclare += "/*Tradução(ões) do(s) campo(s) novo(s)*/\n";
-    queryDeclare += "\t var_NovaTraducaoPt t_Traducao := t_Traducao(" + listColumnPort.slice(0, -1) + ")\n";
-    queryDeclare += "\t var_NovaTraducaoEs t_Traducao := t_Traducao(" + listColumnSpan.slice(0, -1) + ")\n";
-    queryDeclare += "\t var_NovaTraducaoEn t_Traducao := t_Traducao(" + listColumnEngl.slice(0, -1) + ")\n";
-    queryDeclare += "\t var_NovaTraducaoZh t_Traducao := t_Traducao(" + listColumnEngl.slice(0, -1) + ")\n";
+    queryDeclare += "\t var_NovaTraducaoPt t_Traducao := t_Traducao(" + listColumnPort.slice(0, -1) + ");\n";
+    queryDeclare += "\t var_NovaTraducaoEs t_Traducao := t_Traducao(" + listColumnSpan.slice(0, -1) + ");\n";
+    queryDeclare += "\t var_NovaTraducaoEn t_Traducao := t_Traducao(" + listColumnEngl.slice(0, -1) + ");\n";
+    queryDeclare += "\t var_NovaTraducaoZh t_Traducao := t_Traducao(" + listColumnEngl.slice(0, -1) + ");\n";
     queryDeclare += "/*### SE PRECISAR ADICIONAR OUTRO IDIOMA QUE NÃO ESTEJA AQUI, DEVE SER CRIADO UM NOVO CURSOR E ADICIONAR ELE NO LOOP NO FINAL DO SCRIPT ###*/ \n";
     queryDeclare += "\n";
     queryDeclare += "/*Variável para controle da visão*/\n";
