@@ -7,6 +7,11 @@ export class ScriptService {
 
   constructor() { }
 
+  public abaFirstName: string = "Script Generated";
+  public abaSecondName: string = "Alternative Script Generated";
+  public fileFirstName: string = "";
+  public fileSecondName: string = "";
+
   private script: string = '';
   private alternativeScript: string = '';
   
@@ -29,5 +34,10 @@ export class ScriptService {
   cleanScript(){
     this.script = '';
     this.alternativeScript = '';
+
+    this.abaFirstName = "Script Generated";
+    this.abaSecondName = "Alternative Script Generated";
+    this.fileFirstName = "";
+    this.fileSecondName = "";
   }
 }

@@ -13,6 +13,7 @@ import { PageComponent } from './page/page.component';
 import { EditcubeComponent } from './editcube/editcube.component';
 import { NewcubeComponent } from './newcube/newcube.component';
 import { FunctioncontrolComponent } from './functioncontrol/functioncontrol.component';
+import { ExitComponent } from './exit/exit.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { FunctioncontrolComponent } from './functioncontrol/functioncontrol.comp
     PageComponent,
     EditcubeComponent,
     NewcubeComponent,
-    FunctioncontrolComponent
+    FunctioncontrolComponent,
+    ExitComponent
   ],
   imports: [
     BrowserModule,

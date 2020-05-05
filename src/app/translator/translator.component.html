@@ -150,7 +150,7 @@
                 <div class="card-footer text-right">
                     <small class="text-muted">
 
-                        <button type="button" class="btn btn-danger btn-sm" (click)="removeTranslateKey(i)">
+                        <button type="button" class="btn btn-danger btn-sm" (click)="removeTranslateKey(i)" *ngIf="translateFormGroup.controls.length > 1">
                             <img alt="Remove Key" title="Remove Key" src="./assets/btn/btnRemove.png" />
                             &nbsp; Remove Key
                         </button>

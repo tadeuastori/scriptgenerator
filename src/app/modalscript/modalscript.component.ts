@@ -18,6 +18,11 @@ export class ModalscriptComponent implements OnInit {
     interval(7000).subscribe(y => {this.checkMessage()});
   }
 
+  abaFirst: string = '';
+  abaSecond: string = '';
+  fileFirstName: string = '';
+  fileSecondName: string = '';
+
   pageTitleModal: string = '';
   generatedScript: string = '';
   alternativeGeneratedScript: string = '';
@@ -34,16 +39,21 @@ export class ModalscriptComponent implements OnInit {
   openScript(): void {
     this.generatedScript = this.scriptservice.GetScript();
     this.alternativeGeneratedScript = this.scriptservice.GetAlternativeScript();
+
+    this.abaFirst = this.scriptservice.abaFirstName;
+    this.abaSecond = this.scriptservice.abaSecondName;
+    this.fileFirstName = this.scriptservice.fileFirstName;
+    this.fileSecondName = this.scriptservice.fileSecondName;
   }
 
   //######################
 
   copyGeneratedScript(): void {
     if(this.navActive == "1"){
-      this.exportService.copyGeneratedScript(this.generatedScript, "divConteudoGenerated", "generatedScript");
+      this.exportService.copyGeneratedScript(this.generatedScript, "divConteudoGenerated", "generatedScript", this.fileFirstName);
       this.copyMessage = this.exportService.setMessageCopyClipBoard();
     } else {
-      this.exportService.copyGeneratedScript(this.alternativeGeneratedScript, "divConteudoAlternativo", "alternativeGeneratedScript");
+      this.exportService.copyGeneratedScript(this.alternativeGeneratedScript, "divConteudoAlternativo", "alternativeGeneratedScript", this.fileSecondName);
       this.copyMessage = this.exportService.setAlternativeMessageCopyClipBoard();
     }    
   }
@@ -55,11 +65,11 @@ export class ModalscriptComponent implements OnInit {
   }
 
   dynamicDownloadTxt(): void {
-    if(this.navActive == "1"){
-      this.exportService.dynamicDownloadTxt(this.generatedScript);
+    if(this.navActive == "1") {
+      this.exportService.dynamicDownloadTxt(this.generatedScript, this.fileFirstName);
       this.copyMessage = this.exportService.setMessageCopyClipBoard();
     } else {
-      this.exportService.dynamicDownloadTxt(this.alternativeGeneratedScript);
+      this.exportService.dynamicDownloadTxt(this.alternativeGeneratedScript, this.fileSecondName);
       this.copyMessage = this.exportService.setAlternativeMessageDownload();
     }  
   }

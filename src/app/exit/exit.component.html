@@ -1,0 +1,149 @@
+<form [formGroup]="form">
+
+    <div class="card" id="formHeader">
+        <div class="card-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col">                      
+                    </div>
+                    <div class="col-sm">                        
+                        <div class="form-check text-right">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1"
+                                            formControlName="getcommit" (change)="generateScript()">
+                                        <label class="custom-control-label" for="customCheck1">Set Commit?</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <div formArrayName="exit">
+        
+        <div class="card" *ngFor="let exitItem of exitFormGroup.controls; let i = index;" style="margin-bottom: 5px;">
+            <div [formGroupName]="i">
+
+                <div class="card bg-light">
+                    <h5 class="card-header">
+                        Exit
+                    </h5>
+                </div>
+                <div class="card-body">
+
+                    <div class="row mb-1">
+                        <div class="col-sm-12">
+                            <div class="input-group mb-1">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">ID</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="ID" aria-describedby="basic-addon1"
+                                    formControlName="exitId" (change)="generateScript()" placeholder="Ex: XCAD0001 [ Começar com 'X' | Seguido de 3 letras maiúsculas (referecia módulo. {COL, SIL, VIV, etc.}) | Número de 0000 a 9999 ]">
+                            </div>
+                            <small class="text-danger"
+                                *ngIf="getExitFormGroup(i).controls['exitId'].hasError('required')">
+                                ID is required! </small>&nbsp;
+                        </div>
+                    </div>
+
+                    <div class="row mb-1">
+                        <div class="col-sm-12">
+                            <div class="input-group mb-1">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Description</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Description" aria-describedby="basic-addon1" placeholder="Exit Description"
+                                    formControlName="exitDescription" (change)="generateScript()">
+                            </div>
+                            <small class="text-danger"
+                                *ngIf="getExitFormGroup(i).controls['exitDescription'].hasError('required')">
+                                Description is required! </small>&nbsp;
+                        </div>
+                    </div>
+
+                    <div class="row mb-1">
+                        <div class="col-sm-12">
+                            <div class="input-group mb-1">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Observation</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Observation" aria-describedby="basic-addon1" placeholder="Exit Observation"
+                                    formControlName="exitObservation" (change)="generateScript()">
+                            </div>
+                            <small class="text-danger"
+                                *ngIf="getExitFormGroup(i).controls['exitObservation'].hasError('required')">
+                                Observation is required! </small>&nbsp;
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div class="card bg-light">
+                    <h5 class="card-header">
+                        Interaction
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-1">
+                        <div class="col-sm-9">
+                            <div class="input-group mb-1">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Description</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Description" placeholder="Interaction Description"
+                                    aria-describedby="basic-addon1" formControlName="interactionDescription" (change)="generateScript()">
+                            </div>
+                            <small class="text-danger"
+                                *ngIf="getExitFormGroup(i).controls['interactionDescription'].hasError('required')">
+                                Description is required! </small>&nbsp;
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="input-group mb-1">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Sequence</span>
+                                </div>
+                                <input type="number" class="form-control" aria-label="interactionSequence" placeholder="Sequence"
+                                    aria-describedby="basic-addon1" formControlName="interactionSequence"
+                                    (change)="generateScript()">
+                            </div>
+                            <small class="text-danger"
+                                *ngIf="getExitFormGroup(i).controls['interactionSequence'].hasError('required')">
+                                Sequence is required! </small>&nbsp;
+                        </div>
+                    </div>
+
+                    <div class="row mb-1">
+                        <div class="col-sm">
+                            <div class="input-group">
+
+                                <div class="input-group-prepend">
+                                 <span class="input-group-text">Interaction</span>
+                                </div>
+                                <textarea class="form-control" aria-label="interactionScript" aria-describedby="interactionScript"
+                                    formControlName="interactionScript" (change)="generateScript()" rows="10" placeholder="Paste here the query that will be execute into the Exit"></textarea>
+                            </div>
+                            <small class="text-danger"
+                                *ngIf="getExitFormGroup(i).controls['interactionScript'].hasError('required')">
+                                Interaction is required! </small>&nbsp;
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-footer text-right">
+                    <small class="text-muted">
+                    </small>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</form>

@@ -241,7 +241,7 @@
                 <div class="card-footer text-right">
                     <small class="text-muted">
 
-                        <button type="button" class="btn btn-danger btn-sm" (click)="removePage(i)">
+                        <button type="button" class="btn btn-danger btn-sm" (click)="removePage(i)" *ngIf="pageFormGroup.controls.length > 1">
                             <img alt="Remove Page" title="Remove Page" src="./assets/btn/btnRemove.png" />
                             &nbsp; Remove Page
                         </button>

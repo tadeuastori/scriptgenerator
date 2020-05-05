@@ -30,7 +30,7 @@ export class ExportService {
     return 'The alternative script is ready for download';    
   }
 
-  copyGeneratedScript(value: string, div: string, aba: string) {
+  copyGeneratedScript(value: string, div: string, aba: string, title: string) {
 
     this.generatedScript = value;
     
@@ -40,7 +40,7 @@ export class ExportService {
     selBox.style.top = '0';
     selBox.style.opacity = '0';
     selBox.value = this.generatedScript;
-    selBox.id = this.generateFileName();
+    selBox.id = this.generateFileName(title);
 
     var divAtual = document.getElementById(div);
     var divText = document.getElementById(aba);
@@ -54,7 +54,7 @@ export class ExportService {
 
   }
 
-  generateFileName(): string {
+  generateFileName(title: string): string {
 
     var objToday  = new Date();
     var dd = String(objToday.getDate()).padStart(2, '0');
@@ -66,7 +66,11 @@ export class ExportService {
     
     var today = yyyy + mm + dd + hour + minute + second;
 
-    return today;
+    if (title == '') {
+      return 'delta-' + today + '.sql';
+    } else {
+      return title + '.sql';
+    }      
   }
 
 
@@ -80,10 +84,10 @@ export class ExportService {
     }
   }
 
-  dynamicDownloadTxt(value: string) {
+  dynamicDownloadTxt(value: string, title: string) {
     this.fakeValidateUserData(value).subscribe((res) => {
       this.dyanmicDownloadByHtmlTag({
-        fileName: 'delta-' + this.generateFileName() + '.sql',
+        fileName: this.generateFileName(title),
         text: res 
       });
     });

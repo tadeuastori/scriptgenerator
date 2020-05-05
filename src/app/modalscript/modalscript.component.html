@@ -15,12 +15,11 @@
                     *ngIf="enableAba">
                     <li class="nav-item">
                         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                            (click)="changeNavs(1)" aria-controls="home" aria-selected="true">Script Generated</a>
+                            (click)="changeNavs(1)" aria-controls="home" aria-selected="true">{{abaFirst}}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="alternative-tab" data-toggle="tab" href="#alternative" role="tab"
-                            (click)="changeNavs(2)" aria-controls="alternative" aria-selected="false">Alternative Script
-                            Generated</a>
+                            (click)="changeNavs(2)" aria-controls="alternative" aria-selected="false">{{abaSecond}}</a>
                     </li>
                 </ul>
 

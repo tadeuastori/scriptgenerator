@@ -157,7 +157,7 @@
                 <div class="card-footer text-right">
                     <small class="text-muted">
 
-                        <button type="button" class="btn btn-danger btn-sm" (click)="removeConstant(i)">
+                        <button type="button" class="btn btn-danger btn-sm" (click)="removeConstant(i)" *ngIf="constantFormGroup.controls.length > 1">
                             <img alt="Remove Constant" title="Remove Constant" src="./assets/btn/btnRemove.png" />
                             &nbsp; Remove Constant
                         </button>

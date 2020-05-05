@@ -14,6 +14,7 @@ export const GENERATORS: Generator[] = [
   { id: ++countId, name: 'Create Cube', link: '/newcube', img: pathImg + 'imgCubeNew.png' },
   { id: ++countId, name: 'Edit Cube', link: '/editcube', img: pathImg + 'imgCubeEdit.png' },
   { id: ++countId, name: 'Function Control', link: '/functioncontrol', img: pathImg + 'imgFunctionControl.png' },
+  { id: ++countId, name: 'Exit', link: '/exit', img : pathImg + 'imgExit.png'}
 ];
 
 export const TECHNOLOGIES: Technology [] = [

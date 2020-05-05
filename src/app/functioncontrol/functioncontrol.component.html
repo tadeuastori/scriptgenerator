@@ -100,7 +100,7 @@
                 <div class="card-footer text-right">
                     <small class="text-muted">
 
-                        <button type="button" class="btn btn-danger btn-sm" (click)="removeFunctionControl(i)">
+                        <button type="button" class="btn btn-danger btn-sm" (click)="removeFunctionControl(i)" *ngIf="functionControlFormGroup.controls.length > 1">
                             <img alt="Remove Function Control" title="Remove Function Control"
                                 src="./assets/btn/btnRemove.png" />
                             &nbsp; Remove Function Control

@@ -161,7 +161,7 @@
                 <div class="card-footer text-right">
                     <small class="text-muted">
 
-                        <button type="button" class="btn btn-danger btn-sm" (click)="removeColumn(i)">
+                        <button type="button" class="btn btn-danger btn-sm" (click)="removeColumn(i)" *ngIf="columnFormGroup.controls.length > 1">
                             <img alt="Remove Column" title="Remove Column" src="./assets/btn/btnRemove.png" />
                             &nbsp; Remove Column
                         </button>
