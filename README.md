@@ -1,5 +1,5 @@
 # Script Generation 
-[![Generic badge](https://img.shields.io/badge/ANGULAR-8.2.0-RED.svg)]()
+[![Generic badge](https://img.shields.io/badge/ANGULAR-9.1.4-RED.svg)]()
 [![Generic badge](https://img.shields.io/badge/HTML-5-ORANGE.svg)]()
 [![Generic badge](https://img.shields.io/badge/BOOTSTRAP-4.3-VIOLET.svg)]()
 [![Generic badge](https://img.shields.io/badge/CSS-3-BLUE.svg)]()
@@ -24,6 +24,8 @@ With some fields filled in, this project will generate all the necessary SQL cod
 | Edit Existing Cube        |   [![Generic badge](https://img.shields.io/badge/DONE-SUCCESS.svg)]()
 | Control Function          |   [![Generic badge](https://img.shields.io/badge/DONE-SUCCESS.svg)]()
 | Exit                      |   [![Generic badge](https://img.shields.io/badge/DONE-SUCCESS.svg)]()
+| Accepting suggestions... :)  
+
 
 ## Some Automations
 
