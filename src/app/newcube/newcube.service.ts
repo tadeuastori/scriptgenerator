@@ -72,8 +72,8 @@ export class NewcubeService implements ScriptInterface {
         listColumnName += "'" + item.value["columnname"] + "',";
         listColumnFormat += "'" + item.value["format"] + "',";
         listColumnPort += "'" + item.value["portuguese"] + "',";
-        listColumnEngl += "'" + item.value["spanish"] + "',";
-        listColumnSpan += "'" + item.value["english"] + "',";
+        listColumnEngl += "'" + item.value["english"] + "',";
+        listColumnSpan += "'" + item.value["spanish"] + "',";
         listColumnPrevious += "'" + (!Boolean(item.value["columnbefore"]) ? "" : item.value["columnbefore"]) + "',";
 
         isCreated = "S";

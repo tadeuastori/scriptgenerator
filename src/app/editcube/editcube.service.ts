@@ -73,7 +73,7 @@ export class EditcubeService implements ScriptInterface {
     queryDeclare += "/*Deixar em branco caso queira adicionar ao fim do cubo*/\n";
     queryDeclare += "\t var_ColunaAnterior t_Anterior := t_Anterior(" + listColumnPrevious.slice(0, -1) + ");\n";
     queryDeclare += "/*Formato(s) do(s) campo(s) novo(s)*/\n";
-    queryDeclare += "\t var_NovoFormato t_Formato := t_Formato(" + listColumnFormat.slice(0, -1) + ")\n";
+    queryDeclare += "\t var_NovoFormato t_Formato := t_Formato(" + listColumnFormat.slice(0, -1) + ");\n";
     queryDeclare += "/*Tradução(ões) do(s) campo(s) novo(s)*/\n";
     queryDeclare += "\t var_NovaTraducaoPt t_Traducao := t_Traducao(" + listColumnPort.slice(0, -1) + ");\n";
     queryDeclare += "\t var_NovaTraducaoEs t_Traducao := t_Traducao(" + listColumnSpan.slice(0, -1) + ");\n";
@@ -152,7 +152,7 @@ export class EditcubeService implements ScriptInterface {
     queryProcedure += "\t\t UPDATE  ADM_CAMPO_RELATORIO\n";
     queryProcedure += "\t\t SET 	NUM_SEQUENCIA =	decode(var_ColunaAnterior(i), '',\n";
     queryProcedure += "\t\t\t\t\t (\n";
-    queryProcedure += "\t\t\t\t\t  SELECT\t\t max(CR.NUM_SEQUENCIA) +\n"; 1
+    queryProcedure += "\t\t\t\t\t  SELECT\t\t max(CR.NUM_SEQUENCIA) + 1\n";
     queryProcedure += "\t\t\t\t\t  FROM\t\t\t ADM_RELATORIO R\n";
     queryProcedure += "\t\t\t\t\t  INNER JOIN 	CON_VISAO V 			ON V.CD_VISAO = R.CD_VISAO\n";
     queryProcedure += "\t\t\t\t\t  INNER JOIN 	CON_COLUNA_VISAO CV 	ON V.CD_VISAO = R.CD_VISAO\n";
