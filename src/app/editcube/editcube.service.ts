@@ -171,7 +171,7 @@ export class EditcubeService implements ScriptInterface {
     queryProcedure += "\t\t\t\t\t  AND UPPER(V.DCR_NOME_FISICO) 		= v_NomeViewCubo\n";
     queryProcedure += "\t\t\t\t\t )\n";
     queryProcedure += "\t\t\t\t )\n";
-    queryProcedure += "\t\t WHERE 	CD_COLUNA_VISAO = (\n";
+    queryProcedure += "\t\t WHERE 	CD_COLUNA_VISAO in (\n";
     queryProcedure += "\t\t\t\t\t SELECT 	CV.CD_COLUNA_VISAO\n";
     queryProcedure += "\t\t\t\t\t FROM 		ADM_RELATORIO R\n";
     queryProcedure += "\t\t\t\t\t INNER JOIN CON_VISAO V 			ON V.CD_VISAO = R.CD_VISAO\n";
